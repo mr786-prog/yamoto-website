@@ -28,7 +28,7 @@
 
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a href="/" class="logo-link" aria-label="Yamoto Home">
+      <a href="#hero" class="logo-link" aria-label="Yamoto Home — go to hero">
         <img src="website logo/Yamoto Logo.PNG" alt="Yamoto — Your Auto Mate" class="logo-img" width="140" height="70">
       </a>
       <nav class="main-nav" aria-label="Main navigation">
@@ -66,19 +66,19 @@
   <main>
 
     <section class="hero" id="hero" aria-label="Hero">
-      <div class="hero-slide active" style="background-image:url('images/hero image 1.png')" aria-hidden="false">
-        <div class="hero-content container">
+      <div class="hero-slide hero-slide--service active" style="background-image:url('images/hero image 1.png')" aria-hidden="false">
+        <div class="hero-content hero-content--service container">
           <h1>Wheel Alignment &amp;<br>Tyre Care in Narsingi, Hyderabad</h1>
           <div class="hero-ctas">
             <a href="tel:+919652807626" class="btn btn-primary btn-lg" data-track="hero-call">Book Appointment</a>
           </div>
         </div>
       </div>
-      <div class="hero-slide" style="background-image:url('images/hero image 2.png')" aria-hidden="true">
-        <div class="hero-content container">
+      <div class="hero-slide hero-slide--offer" style="background-image:url('images/hero image 2.png')" aria-hidden="true">
+        <div class="hero-content hero-content--offer container">
           <h1>Swap Your Old Tyres<br>&amp; Save up to &#8377;1,000</h1>
-          <div class="offer-box">
-            <p>Buy 4 new tyres and get up to &#8377;1,000 off</p>
+          <div class="offer-box" aria-label="Offer: Buy 4 new tyres and get up to 1,000 rupees off">
+            <p>Buy 4 new tyres<br>Get up to <strong>&#8377;1,000 off</strong></p>
           </div>
           <div class="hero-ctas">
             <a href="tel:+919652807626" class="btn btn-primary btn-lg" data-track="hero-offer-call">Claim the Offer</a>
@@ -121,7 +121,6 @@
             </div>
             <div class="service-content">
               <h3>3D Wheel Alignment</h3>
-              <p>Restore smooth, straight handling with precise computerised alignment.</p>
               <a href="tel:+919652807626" class="btn btn-service" data-track="service-align">Book Appointment</a>
             </div>
           </article>
@@ -131,7 +130,6 @@
             </div>
             <div class="service-content">
               <h3>Wheel Balancing</h3>
-              <p>Reduce vibration and enjoy a steadier, more comfortable drive.</p>
               <a href="tel:+919652807626" class="btn btn-service" data-track="service-balance">Book Appointment</a>
             </div>
           </article>
@@ -141,7 +139,6 @@
             </div>
             <div class="service-content">
               <h3>Tyre Rotation &amp; Nitrogen</h3>
-              <p>Help your tyres wear evenly and maintain consistent pressure.</p>
               <a href="tel:+919652807626" class="btn btn-service" data-track="service-rotate">Book Appointment</a>
             </div>
           </article>
@@ -151,7 +148,6 @@
             </div>
             <div class="service-content">
               <h3>New Tyre Replacement</h3>
-              <p>Find the right tyres for your vehicle, fitted by our team.</p>
               <a href="tel:+919652807626" class="btn btn-service" data-track="service-tyres">Book Appointment</a>
             </div>
           </article>
@@ -165,10 +161,12 @@
         <div class="container location-inner">
           <div class="location-info">
             <h2>Visit Yamoto in Narsingi</h2>
+            <h3>Address</h3>
             <address>
               <p class="location-address">Narsingi, Hyderabad, Telangana 500089<br><em>Beside HPCL Petrol Station
                   &amp; Bajaj Electronics</em></p>
             </address>
+            <h3>Opening Hours</h3>
             <table class="hours-table" aria-label="Opening hours">
               <tbody>
                 <tr>
@@ -340,6 +338,29 @@
       </div>
     </section>
 
+    <section class="faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <header class="section-head">
+          <h2 id="faq-title">Frequently Asked Questions</h2>
+          <p>Quick answers about wheel alignment, tyre brands, and visiting Yamoto in Narsingi.</p>
+        </header>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Where can I get computerised wheel alignment in Narsingi, Hyderabad?</summary>
+            <p>Yamoto provides 3D wheel alignment in Narsingi, Hyderabad, beside HPCL Petrol Station and Bajaj Electronics. Open Monday to Saturday, 10 AM–9 PM, and Sunday, 10 AM–3 PM.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Which tyre brands does Yamoto stock?</summary>
+            <p>Yamoto stocks MRF, Bridgestone, Apollo, JK Tyre, Continental, Michelin, CEAT, Yokohama, and Goodyear tyres, with manufacturer warranty.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What are Yamoto's opening hours?</summary>
+            <p>Yamoto is open Monday to Saturday from 10 AM to 9 PM and Sunday from 10 AM to 3 PM. Call +91 96528 07626 between 8 AM and 8 PM.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer" aria-label="Site footer">
@@ -350,7 +371,7 @@
         <p class="footer-gstin">Reliable Marketing Services · GSTIN: 36ABAFR5273R1ZI</p>
       </div>
       <div class="footer-contact">
-        <h3>Contact</h3>
+        <h3>Address</h3>
         <address>
           <p>Narsingi, Hyderabad, Telangana 500089</p>
           <p>Beside HPCL Petrol Station &amp; Bajaj Electronics</p>
@@ -405,7 +426,7 @@
   </nav>
 
   <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TireShop","@id":"https://yamoto.in/#business","name":"Yamoto - Your Auto Mate","alternateName":"Yamoto Tyre Care Narsingi","description":"Tyre shop in Narsingi, Hyderabad offering 3D wheel alignment using ATS ELGI equipment, wheel balancing, tyre rotation, nitrogen fill and genuine tyre sales from MRF, Michelin, Bridgestone, Apollo, CEAT, Yokohama, Continental, JK Tyre and Goodyear.","url":"https://yamoto.in/","telephone":["+919652807626","+919676065353"],"email":"yamoto.rms@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Beside HPCL Petrol Station and Bajaj Electronics, Narsingi Main Road","addressLocality":"Narsingi","addressRegion":"Telangana","postalCode":"500089","addressCountry":"IN"},"geo":{"@type":"GeoCoordinates","latitude":17.3822,"longitude":78.3582},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"15:00"}],"areaServed":["Narsingi","Kokapet","Gandipet","Manikonda","Financial District","Hyderabad"],"sameAs":["https://www.instagram.com/yamoto.automate"],"parentOrganization":{"@type":"Organization","name":"Reliable Marketing Services","taxID":"36ABAFR5273R1ZI"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where can I get computerised wheel alignment in Narsingi, Hyderabad?","acceptedAnswer":{"@type":"Answer","text":"Yamoto provides 3D wheel alignment in Narsingi, Hyderabad, beside HPCL Petrol Station and Bajaj Electronics. Open Mon–Sat 10 AM–9 PM, Sun 10 AM–3 PM."}},{"@type":"Question","name":"Which tyre brands does Yamoto stock?","acceptedAnswer":{"@type":"Answer","text":"MRF, Bridgestone, Apollo, JK Tyre, Continental, Michelin, CEAT, Yokohama and Goodyear — all with manufacturer warranty."}},{"@type":"Question","name":"What are Yamoto's opening hours?","acceptedAnswer":{"@type":"Answer","text":"Monday to Saturday 10 AM to 9 PM. Sunday 10 AM to 3 PM. Phone 8 AM to 8 PM on +91 96528 07626."}}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"TireShop","@id":"https://yamoto.in/#business","name":"Yamoto - Your Auto Mate","alternateName":"Yamoto Tyre Care Narsingi","description":"Tyre shop in Narsingi, Hyderabad offering 3D wheel alignment using ATS ELGI equipment, wheel balancing, tyre rotation, nitrogen fill and genuine tyre sales from MRF, Michelin, Bridgestone, Apollo, CEAT, Yokohama, Continental, JK Tyre and Goodyear.","url":"https://yamoto.in/","telephone":["+919652807626","+919676065353"],"email":"yamoto.rms@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Beside HPCL Petrol Station and Bajaj Electronics, Narsingi Main Road","addressLocality":"Narsingi","addressRegion":"Telangana","postalCode":"500089","addressCountry":"IN"},"geo":{"@type":"GeoCoordinates","latitude":17.3822,"longitude":78.3582},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"15:00"}],"areaServed":["Narsingi","Kokapet","Gandipet","Manikonda","Financial District","Hyderabad"],"sameAs":["https://www.instagram.com/yamoto.automate"],"parentOrganization":{"@type":"Organization","name":"Reliable Marketing Services","taxID":"36ABAFR5273R1ZI"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where can I get computerised wheel alignment in Narsingi, Hyderabad?","acceptedAnswer":{"@type":"Answer","text":"Yamoto provides 3D wheel alignment in Narsingi, Hyderabad, beside HPCL Petrol Station and Bajaj Electronics. Open Monday to Saturday, 10 AM–9 PM, and Sunday, 10 AM–3 PM."}},{"@type":"Question","name":"Which tyre brands does Yamoto stock?","acceptedAnswer":{"@type":"Answer","text":"Yamoto stocks MRF, Bridgestone, Apollo, JK Tyre, Continental, Michelin, CEAT, Yokohama, and Goodyear tyres, with manufacturer warranty."}},{"@type":"Question","name":"What are Yamoto's opening hours?","acceptedAnswer":{"@type":"Answer","text":"Yamoto is open Monday to Saturday from 10 AM to 9 PM and Sunday from 10 AM to 3 PM. Call +91 96528 07626 between 8 AM and 8 PM."}}]}]}
 </script>
 
   <script src="js/main.js" defer></script>
