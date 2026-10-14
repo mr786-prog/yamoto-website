@@ -8,7 +8,26 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroSlider();
   initMobileMenu();
   initTracking();
+  initQuoteForm();
 });
+
+function initQuoteForm() {
+  const form = document.getElementById('quote-form');
+  if (!form) return;
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const data = new FormData(form);
+    const lines = [
+      'Hi Yamoto, I need a free quote.',
+      `Name: ${data.get('name')}`,
+      `Mobile: ${data.get('mobile')}`,
+      `Car: ${data.get('car')}`,
+      `Service: ${data.get('service')}`,
+      `Preferred visit time: ${data.get('visit') || 'Not specified'}`
+    ];
+    window.open(`https://wa.me/919676065353?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
+  });
+}
 
 /* ==========================================================================
    1. Live Opening Hours Status (IST Timezone: UTC+5:30)

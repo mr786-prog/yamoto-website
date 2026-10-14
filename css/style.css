@@ -716,6 +716,24 @@ h1, h2, h3, h4 {
   margin-bottom: 20px;
 }
 
+.quote-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 760px;
+  margin: 24px auto 0;
+  text-align: left;
+}
+.quote-form label { display: grid; gap: 6px; font-weight: 600; }
+.quote-form input, .quote-form select {
+  width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid #cbd5e1;
+  border-radius: var(--radius-sm); background: #fff; color: var(--navy-dark); font: inherit;
+}
+.quote-form button { grid-column: 1 / -1; justify-self: center; }
+.quote-contact { margin-top: 16px; }
+.quote-contact a { color: #fff; text-decoration: underline; }
+@media (max-width: 600px) { .quote-form { grid-template-columns: 1fr; } }
+
 /* ==========================================================================
    Services Section
    ========================================================================== */

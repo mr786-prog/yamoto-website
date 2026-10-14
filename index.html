@@ -81,7 +81,7 @@
             <p>Buy 4 new tyres<br>Get up to <strong>&#8377;1,000 off</strong></p>
           </div>
           <div class="hero-ctas">
-            <a href="tel:+919652807626" class="btn btn-primary btn-lg" data-track="hero-offer-call">Claim the Offer</a>
+            <a href="#contact-cta" class="btn btn-primary btn-lg" data-track="hero-offer-call">Claim the Offer</a>
           </div>
         </div>
       </div>
@@ -98,12 +98,18 @@
         <div class="cta-overlay"></div>
         <div class="container cta-content">
           <h2>Get a Free Quote</h2>
-          <div class="cta-buttons">
-            <a href="https://wa.me/919676065353?text=Hi%20Yamoto%2C%20I%20need%20a%20quote"
-              class="btn btn-whatsapp btn-xl" target="_blank" rel="noopener" data-track="cta-wa">Chat on WhatsApp</a>
-            <a href="tel:+919652807626" class="btn btn-outline-white btn-xl" data-track="cta-call">Call: +91 96528
-              07626</a>
-          </div>
+          <form class="quote-form" id="quote-form">
+            <label>Name<input name="name" autocomplete="name" required></label>
+            <label>Mobile number<input name="mobile" type="tel" autocomplete="tel" required></label>
+            <label>Car make and model<input name="car" required></label>
+            <label>Service needed<select name="service" required>
+              <option value="">Select a service</option><option>Wheel alignment</option><option>Wheel balancing</option>
+              <option>Tyre rotation</option><option>New tyre replacement</option>
+            </select></label>
+            <label>Preferred visit time (optional)<input name="visit" placeholder="e.g. Saturday afternoon"></label>
+            <button class="btn btn-whatsapp btn-xl" type="submit">Get a Free Quote on WhatsApp</button>
+          </form>
+          <p class="quote-contact">Or call <a href="tel:+919652807626">+91 96528 07626</a> (8 AM–8 PM)</p>
         </div>
       </div>
     </section>
@@ -330,9 +336,9 @@
               alt="Yamoto workshop exterior at night with car in bay, Narsingi Hyderabad" loading="lazy"></figure>
           <figure class="gallery-item"><img src="images/stock image 3.jpeg"
               alt="Yamoto workshop driveway with nitrogen station and tyre racks, Narsingi" loading="lazy"></figure>
-          <figure class="gallery-item"><img src="images/stock image 2.jpeg"
+          <figure class="gallery-item"><img src="images/stock image 1.jpeg"
               alt="Tyre display rack at Yamoto workshop in Narsingi Hyderabad" loading="lazy"></figure>
-          <figure class="gallery-item"><img src="images/shop image.jpeg"
+          <figure class="gallery-item"><img src="images/stock image 5.jpeg"
               alt="Team at work at Yamoto tyre shop in Narsingi Hyderabad" loading="lazy"></figure>
         </div>
       </div>
@@ -345,18 +351,16 @@
           <p>Quick answers about wheel alignment, tyre brands, and visiting Yamoto in Narsingi.</p>
         </header>
         <div class="faq-list">
-          <details class="faq-item">
-            <summary>Where can I get computerised wheel alignment in Narsingi, Hyderabad?</summary>
-            <p>Yamoto provides 3D wheel alignment in Narsingi, Hyderabad, beside HPCL Petrol Station and Bajaj Electronics. Open Monday to Saturday, 10 AM–9 PM, and Sunday, 10 AM–3 PM.</p>
-          </details>
-          <details class="faq-item">
-            <summary>Which tyre brands does Yamoto stock?</summary>
-            <p>Yamoto stocks MRF, Bridgestone, Apollo, JK Tyre, Continental, Michelin, CEAT, Yokohama, and Goodyear tyres, with manufacturer warranty.</p>
-          </details>
-          <details class="faq-item">
-            <summary>What are Yamoto's opening hours?</summary>
-            <p>Yamoto is open Monday to Saturday from 10 AM to 9 PM and Sunday from 10 AM to 3 PM. Call +91 96528 07626 between 8 AM and 8 PM.</p>
-          </details>
+          <details class="faq-item"><summary>What tyre and wheel services does Yamoto offer in Narsingi, Hyderabad?</summary>
+            <p>Yamoto offers wheel alignment, wheel balancing, tyre rotation and new tyre replacement in Narsingi, Hyderabad. Alignment and balancing are done on precision equipment from ATS Elgi, a name known for accuracy, which leads to more precise alignment and balance.</p></details>
+          <details class="faq-item"><summary>Which tyre brands can I buy at Yamoto?</summary>
+            <p>Yamoto is a dealer of top tyre brands, from MRF to Michelin. You can choose from MRF, Bridgestone, Apollo, JK Tyre, Continental, Michelin, Ceat, Yokohama and Goodyear. Yamoto prices fairly, with no unnecessary upselling.</p></details>
+          <details class="faq-item"><summary>Does Yamoto have an offer on new tyres?</summary>
+            <p>Yes. If you swap your old tyres and buy 4 new tyres at Yamoto in Narsingi, you can save up to ₹1,000. To claim the offer, use the “Claim the Offer” button on the website, which takes you to the appointment box.</p></details>
+          <details class="faq-item"><summary>Where is Yamoto located and what are its opening hours?</summary>
+            <p>Yamoto is in Narsingi, Hyderabad, Telangana 500089, beside the HPCL Petrol Station and Bajaj Electronics. It is open Monday to Saturday from 10:00 AM to 9:00 PM, and on Sunday from 10:00 AM to 3:00 PM.</p></details>
+          <details class="faq-item"><summary>How can I book an appointment or get a quote from Yamoto?</summary>
+            <p>You can call Yamoto on +91 96528 07626 (8am–8pm) or message on WhatsApp at +91 96760 65353. You can also fill in the “Get a Free Quote” form on the website with your name, mobile number, car make and model, and the service you need. Preferred visit time is optional.</p></details>
         </div>
       </div>
     </section>
@@ -426,7 +430,11 @@
   </nav>
 
   <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"TireShop","@id":"https://yamoto.in/#business","name":"Yamoto - Your Auto Mate","alternateName":"Yamoto Tyre Care Narsingi","description":"Tyre shop in Narsingi, Hyderabad offering 3D wheel alignment using ATS ELGI equipment, wheel balancing, tyre rotation, nitrogen fill and genuine tyre sales from MRF, Michelin, Bridgestone, Apollo, CEAT, Yokohama, Continental, JK Tyre and Goodyear.","url":"https://yamoto.in/","telephone":["+919652807626","+919676065353"],"email":"yamoto.rms@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Beside HPCL Petrol Station and Bajaj Electronics, Narsingi Main Road","addressLocality":"Narsingi","addressRegion":"Telangana","postalCode":"500089","addressCountry":"IN"},"geo":{"@type":"GeoCoordinates","latitude":17.3822,"longitude":78.3582},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"15:00"}],"areaServed":["Narsingi","Kokapet","Gandipet","Manikonda","Financial District","Hyderabad"],"sameAs":["https://www.instagram.com/yamoto.automate"],"parentOrganization":{"@type":"Organization","name":"Reliable Marketing Services","taxID":"36ABAFR5273R1ZI"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where can I get computerised wheel alignment in Narsingi, Hyderabad?","acceptedAnswer":{"@type":"Answer","text":"Yamoto provides 3D wheel alignment in Narsingi, Hyderabad, beside HPCL Petrol Station and Bajaj Electronics. Open Monday to Saturday, 10 AM–9 PM, and Sunday, 10 AM–3 PM."}},{"@type":"Question","name":"Which tyre brands does Yamoto stock?","acceptedAnswer":{"@type":"Answer","text":"Yamoto stocks MRF, Bridgestone, Apollo, JK Tyre, Continental, Michelin, CEAT, Yokohama, and Goodyear tyres, with manufacturer warranty."}},{"@type":"Question","name":"What are Yamoto's opening hours?","acceptedAnswer":{"@type":"Answer","text":"Yamoto is open Monday to Saturday from 10 AM to 9 PM and Sunday from 10 AM to 3 PM. Call +91 96528 07626 between 8 AM and 8 PM."}}]}]}
+{"@context":"https://schema.org","@type":"TireShop","@id":"https://yamoto.in/#business","name":"Yamoto - Your Auto Mate","alternateName":"Yamoto Tyre Care Narsingi","description":"Tyre shop in Narsingi, Hyderabad offering 3D wheel alignment using ATS ELGI equipment, wheel balancing, tyre rotation and genuine tyre sales from MRF, Michelin, Bridgestone, Apollo, CEAT, Yokohama, Continental, JK Tyre and Goodyear.","url":"https://yamoto.in/","telephone":["+919652807626","+919676065353"],"email":"yamoto.rms@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Beside HPCL Petrol Station and Bajaj Electronics, Narsingi Main Road","addressLocality":"Narsingi","addressRegion":"Telangana","postalCode":"500089","addressCountry":"IN"},"geo":{"@type":"GeoCoordinates","latitude":17.3822,"longitude":78.3582},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"15:00"}],"areaServed":["Narsingi","Kokapet","Gandipet","Manikonda","Financial District","Hyderabad"],"sameAs":["https://www.instagram.com/yamoto.automate"],"parentOrganization":{"@type":"Organization","name":"Reliable Marketing Services","taxID":"36ABAFR5273R1ZI"}}
+  </script>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What tyre and wheel services does Yamoto offer in Narsingi, Hyderabad?","acceptedAnswer":{"@type":"Answer","text":"Yamoto offers wheel alignment, wheel balancing, tyre rotation and new tyre replacement in Narsingi, Hyderabad. Alignment and balancing are done on precision equipment from ATS Elgi, a name known for accuracy, which leads to more precise alignment and balance."}},{"@type":"Question","name":"Which tyre brands can I buy at Yamoto?","acceptedAnswer":{"@type":"Answer","text":"Yamoto is a dealer of top tyre brands, from MRF to Michelin. You can choose from MRF, Bridgestone, Apollo, JK Tyre, Continental, Michelin, Ceat, Yokohama and Goodyear. Yamoto prices fairly, with no unnecessary upselling."}},{"@type":"Question","name":"Does Yamoto have an offer on new tyres?","acceptedAnswer":{"@type":"Answer","text":"Yes. If you swap your old tyres and buy 4 new tyres at Yamoto in Narsingi, you can save up to ₹1,000. To claim the offer, use the “Claim the Offer” button on the website, which takes you to the appointment box."}},{"@type":"Question","name":"Where is Yamoto located and what are its opening hours?","acceptedAnswer":{"@type":"Answer","text":"Yamoto is in Narsingi, Hyderabad, Telangana 500089, beside the HPCL Petrol Station and Bajaj Electronics. It is open Monday to Saturday from 10:00 AM to 9:00 PM, and on Sunday from 10:00 AM to 3:00 PM."}},{"@type":"Question","name":"How can I book an appointment or get a quote from Yamoto?","acceptedAnswer":{"@type":"Answer","text":"You can call Yamoto on +91 96528 07626 (8am–8pm) or message on WhatsApp at +91 96760 65353. You can also fill in the “Get a Free Quote” form on the website with your name, mobile number, car make and model, and the service you need. Preferred visit time is optional."}}]}
 </script>
 
   <script src="js/main.js" defer></script>
