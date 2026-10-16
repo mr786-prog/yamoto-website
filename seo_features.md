@@ -16,6 +16,3 @@ Audit scope: Phase 1 and Phase 2 of `SEO_OPTIMISATION_PLAN.md`, based on the cur
 - **Below-fold image loading:** Content images below the hero use `loading="lazy"`. The map iframe also has lazy loading, but map work is outside this audit scope.
 - **Review structured data:** `index.html` contains AggregateRating structured data and individual Review entries for the displayed reviews. This confirms implementation in the page source; rich result eligibility was not externally validated.
 
-## Remaining plan items
-
-The unfinished Phase 1/2 implementation tasks remain in `SEO_OPTIMISATION_PLAN.md`. The image compression/size work and map/coordinate work were left there without audit, per the owner's exclusions.
