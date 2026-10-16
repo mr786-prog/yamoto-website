@@ -586,6 +586,7 @@ h1, h2, h3, h4 {
 
 .contact-cta-inner {
   position: relative;
+  background-color: var(--navy-dark);
   background-size: cover;
   background-position: center;
   padding: 70px 0;
@@ -758,6 +759,7 @@ h1, h2, h3, h4 {
 
 .location-bg {
   position: relative;
+  background-color: var(--navy-dark);
   background-size: cover;
   background-position: center;
   padding: 80px 0;
@@ -1028,6 +1030,8 @@ h1, h2, h3, h4 {
 }
 
 .brand-tile img {
+  width: auto;
+  height: auto;
   max-height: 110px;
   max-width: 190px;
   object-fit: contain;
@@ -1094,6 +1098,55 @@ h1, h2, h3, h4 {
 
 .reviews-action {
   text-align: center;
+}
+
+/* ==========================================================================
+   Areas We Serve Section (Infinite Auto-Scroll Marquee)
+   ========================================================================== */
+.areas-served {
+  padding: 70px 0;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+.areas-track {
+  display: flex;
+  gap: 28px;
+  width: max-content;
+  animation: marquee-scroll 42s linear infinite;
+}
+
+.areas-track:hover {
+  animation-play-state: paused;
+}
+
+.area-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: #FFFFFF;
+  padding: 20px 28px;
+  width: 240px;
+  height: 170px;
+  transition: var(--transition);
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  text-transform: uppercase;
+}
+
+.area-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--navy-dark);
+  box-shadow: var(--shadow-sm);
+  background: var(--yellow-accent);
+  color: var(--navy-dark);
 }
 
 /* ==========================================================================
@@ -1408,7 +1461,8 @@ h1, h2, h3, h4 {
   .brands,
   .reviews,
   .gallery,
-  .faq-section {
+  .faq-section,
+  .areas-served {
     padding-top: 52px;
     padding-bottom: 52px;
   }
@@ -1498,6 +1552,18 @@ h1, h2, h3, h4 {
   .brand-tile img {
     max-height: 84px;
     max-width: 134px;
+  }
+
+  .areas-track {
+    gap: 14px;
+    animation-duration: 46s;
+  }
+
+  .area-tile {
+    width: 170px;
+    height: 124px;
+    padding: 14px 18px;
+    font-size: 1.1rem;
   }
 
   .review-card {

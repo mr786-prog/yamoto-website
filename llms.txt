@@ -1,57 +1,36 @@
 # Yamoto — Your Auto Mate
 
-> Trusted Tyre Shop & Precision Wheel Alignment in Narsingi, Hyderabad.
+> Tyre shop in Narsingi, Hyderabad: 3D wheel alignment, wheel balancing, tyre rotation and new tyre replacement.
 
 ## Business Information
 - **Name:** Yamoto — Your Auto Mate
-- **Legal Entity:** Reliable Marketing Services
-- **GSTIN:** 36ABAFR5273R1ZI
-- **Category:** Tyre Shop, Wheel Alignment Workshop, Car Care Centre
-- **Address:** Beside HPCL Petrol Station & Bajaj Electronics, Narsingi Main Road, Narsingi, Hyderabad, Telangana 500089, India
-- **Coordinates:** 17.3822° N, 78.3582° E
-- **Primary Phone:** +91 96528 07626 (8:00 AM – 8:00 PM)
-- **WhatsApp:** +91 96760 65353 (24/7 enquiries)
+- **Address:** YAMOTO, 99M6+MXM, Narsingi, Hyderabad, Telangana 500089
+- **Coordinates:** 17.38421° N, 78.36242° E (Plus Code 99M6+MXM)
+- **Phone:** +91 96528 07626 (8 AM – 8 PM)
+- **WhatsApp:** +91 96760 65353
 - **Email:** yamoto.rms@gmail.com
 - **Instagram:** @yamoto.automate
 - **Website:** https://yamoto.in/
+- **Legal Entity:** Reliable Marketing Services (GSTIN: 36ABAFR5273R1ZI)
 
-## Operating Hours
+## Opening Hours
 - **Monday – Saturday:** 10:00 AM – 9:00 PM
 - **Sunday:** 10:00 AM – 3:00 PM
-- **Phone Booking Hours:** 8:00 AM – 8:00 PM daily
 
-## Services Offered
-1. **3D Computerised Wheel Alignment:** High-precision calibration using ATS ELGI 3D optical cameras. Eliminates steering drift and uneven tyre wear. Free multi-point tyre inspection included.
-2. **Dynamic Wheel Balancing:** Digital balancing for alloy and steel wheels to prevent high-speed steering vibration.
-3. **Tyre Rotation & Nitrogen Inflation:** Cross/parallel scientific tyre rotation patterns; 99% pure nitrogen inflation for stable tyre pressure. Free rotation with wheel alignment.
-4. **New Tyre Sales & Fitting:** Authorised genuine tyres for hatchbacks, sedans, compact SUVs, luxury SUVs, and commercial vehicles. Sizes 12" to 20"+.
-5. **Car Studio & Detailing:** Comprehensive automotive studio services.
+## Services
+1. **3D Wheel Alignment:** Done on precision equipment from ATS Elgi, a name known for accuracy, which leads to more precise alignment and balance.
+2. **Wheel Balancing**
+3. **Tyre Rotation**
+4. **New Tyre Replacement**
 
-## Authorised Tyre Brands Stocked
-- MRF Tyres
-- Bridgestone
-- Apollo Tyres
-- Michelin
-- Continental
-- Yokohama
-- Goodyear
-- CEAT
-- JK Tyre
+## Tyre Brands
+Yamoto is a dealer of top tyre brands: MRF, Bridgestone, Apollo, JK Tyre, Continental, Michelin, Ceat, Yokohama and Goodyear. Fair prices with no unnecessary upselling.
 
-All tyres are 100% genuine, backed by full manufacturer warranty and verified fresh DOT manufacture dates.
+## Current Offer
+Swap your old tyres and buy 4 new tyres to save up to ₹1,000.
 
-## Current Offers & Promotions
-- **New Tyre Discount:** Buy 4 new tyres and save up to ₹1,000.
-- **Service Bundles:** Free tyre rotation or free interior cleaning with any computerised wheel alignment service.
+## How to Book
+Call +91 96528 07626, message on WhatsApp at +91 96760 65353, or fill in the "Get a Free Quote" form at https://yamoto.in/ (name, mobile number, car make and model, service needed; preferred visit time is optional).
 
 ## Service Area
-- Narsingi (primary)
-- Kokapet
-- Gandipet
-- Manikonda
-- Puppalaguda
-- Financial District / Gachibowli
-- Outer Ring Road (ORR) Exit 18 corridors
-
-## Machine-Readable Pricing
-See [pricing.md](https://yamoto.in/pricing.md) for detailed service and tyre price ranges.
+Narsingi, Hyderabad

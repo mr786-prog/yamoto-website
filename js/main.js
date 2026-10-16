@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initTracking();
   initQuoteForm();
+  initLazyBackgrounds();
 });
 
 function initQuoteForm() {
@@ -197,4 +198,23 @@ function initTracking() {
       }
     });
   });
+}
+
+/* ==========================================================================
+   Lazy-load decorative section backgrounds (they sit under dark overlays)
+   ========================================================================== */
+function initLazyBackgrounds() {
+  const els = document.querySelectorAll('.lazy-bg[data-bg]');
+  if (!els.length) return;
+  const load = (el) => {
+    el.style.backgroundImage = `url("${el.dataset.bg}")`;
+    el.classList.add('bg-loaded');
+  };
+  if (!('IntersectionObserver' in window)) { els.forEach(load); return; }
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) { load(entry.target); obs.unobserve(entry.target); }
+    });
+  }, { rootMargin: '600px 0px' });
+  els.forEach((el) => io.observe(el));
 }
