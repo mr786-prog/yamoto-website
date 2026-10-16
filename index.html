@@ -29,12 +29,12 @@
   <link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
   <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" as="image" href="images/hero-image-1-640.webp"
+    imagesrcset="images/hero-image-1-640.webp 640w, images/hero-image-1-960.webp 960w, images/hero-image-1.webp 1195w"
+    imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-latin-800-normal.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin-400-normal.woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.min.css">
   <noscript><style>.contact-cta-inner{background-image:url('images/bg-quote.webp')}.services-bg{background-image:url('images/bg-services.webp')}.location-bg{background-image:url('images/bg-location.webp')}</style></noscript>
 </head>
 
@@ -64,7 +64,7 @@
         <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
     </div>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" inert>
       <ul>
         <li><a href="#services" class="mobile-nav-link">Services</a></li>
         <li><a href="#brands" class="mobile-nav-link">Brands</a></li>
@@ -82,7 +82,7 @@
   <main>
 
     <section class="hero" id="hero" aria-label="Hero">
-      <div class="hero-slide hero-slide--service active" aria-hidden="false">
+      <div class="hero-slide hero-slide--service active">
         <div class="offer-layout">
           <div class="hero-content hero-content--split">
             <h1>Wheel Alignment &amp;<br>Tyre Care in<br>Narsingi, Hyderabad</h1>
@@ -92,11 +92,11 @@
             </div>
           </div>
           <div class="offer-layout__media">
-            <img src="images/hero-image-1.webp" width="1195" height="896" alt="Technician aligning the wheel of a red SUV on a lift at Yamoto, Narsingi" fetchpriority="high" decoding="async">
+            <img src="images/hero-image-1-640.webp" srcset="images/hero-image-1-640.webp 640w, images/hero-image-1-960.webp 960w, images/hero-image-1.webp 1195w" sizes="100vw" width="1195" height="896" alt="Technician aligning the wheel of a red SUV on a lift at Yamoto, Narsingi" fetchpriority="high" decoding="async">
           </div>
         </div>
       </div>
-      <div class="hero-slide hero-slide--offer" aria-hidden="true">
+      <div class="hero-slide hero-slide--offer" inert>
         <div class="offer-layout">
           <div class="hero-content hero-content--split">
             <h1>Swap Your Old Tyres<br>&amp; Save up to &#8377;1,000</h1>
@@ -109,7 +109,7 @@
             </div>
           </div>
           <div class="offer-layout__media">
-            <img src="images/hero-image-2.webp" width="900" height="1200" alt="Rows of new car tyres stacked on racks at Yamoto tyre shop, Narsingi" loading="lazy" decoding="async">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="images/hero-image-2-640.webp 640w, images/hero-image-2.webp 900w" data-src="images/hero-image-2.webp" sizes="100vw" width="900" height="1200" alt="Rows of new car tyres stacked on racks at Yamoto tyre shop, Narsingi" decoding="async">
           </div>
         </div>
       </div>
@@ -182,7 +182,7 @@
         <div class="services-grid">
           <article class="service-card">
             <div class="service-image">
-              <img src="images/service-3d-wheel-alignment.webp" width="700" height="1050" alt="Wheel Alignment" loading="lazy">
+              <img src="images/service-3d-wheel-alignment.webp" srcset="images/service-3d-wheel-alignment-480.webp 480w, images/service-3d-wheel-alignment.webp 700w" sizes="(min-width: 640px) 50vw, 100vw" width="700" height="1050" alt="Wheel Alignment" loading="lazy" decoding="async">
             </div>
             <div class="service-content">
               <h3>3D Wheel Alignment</h3>
@@ -191,7 +191,7 @@
           </article>
           <article class="service-card">
             <div class="service-image">
-              <img src="images/service-wheel-balancing.webp" width="640" height="640" alt="Wheel Balancing" loading="lazy">
+              <img src="images/service-wheel-balancing.webp" srcset="images/service-wheel-balancing-480.webp 480w, images/service-wheel-balancing.webp 640w" sizes="(min-width: 640px) 50vw, 100vw" width="640" height="640" alt="Wheel Balancing" loading="lazy" decoding="async">
             </div>
             <div class="service-content">
               <h3>Wheel Balancing</h3>
@@ -200,7 +200,7 @@
           </article>
           <article class="service-card">
             <div class="service-image">
-              <img src="images/service-tyre-rotation.webp" width="400" height="400" alt="Tyre Rotation" loading="lazy">
+              <img src="images/service-tyre-rotation.webp" width="400" height="400" alt="Tyre Rotation" loading="lazy" decoding="async">
             </div>
             <div class="service-content">
               <h3>Tyre Rotation</h3>
@@ -209,7 +209,7 @@
           </article>
           <article class="service-card">
             <div class="service-image">
-              <img src="images/service-new-tyre-replacement.webp" width="735" height="490" alt="New Tyre Replacement" loading="lazy">
+              <img src="images/service-new-tyre-replacement.webp" srcset="images/service-new-tyre-replacement-480.webp 480w, images/service-new-tyre-replacement.webp 735w" sizes="(min-width: 640px) 50vw, 100vw" width="735" height="490" alt="New Tyre Replacement" loading="lazy" decoding="async">
             </div>
             <div class="service-content">
               <h3>New Tyre Replacement</h3>
@@ -268,7 +268,7 @@
         </header>
         <div class="why-grid">
           <article class="why-card">
-            <div class="why-image"><img src="images/Value-for-Money.jpg" width="735" height="643" alt="Value for money at Yamoto" loading="lazy"></div>
+            <div class="why-image"><img src="images/Value-for-Money.webp" srcset="images/Value-for-Money-480.webp 480w, images/Value-for-Money.webp 735w" sizes="(min-width: 768px) 33vw, 100vw" width="735" height="643" alt="Value for money at Yamoto" loading="lazy" decoding="async"></div>
             <div class="why-content">
               <h3>Value for Money</h3>
               <p>Fair prices with no unnecessary upselling</p>
@@ -276,7 +276,7 @@
             </div>
           </article>
           <article class="why-card">
-            <div class="why-image"><img src="images/Authorised-Top-Brands.jpg" width="736" height="736" alt="Authorised top tyre brands at Yamoto" loading="lazy"></div>
+            <div class="why-image"><img src="images/Authorised-Top-Brands.webp" srcset="images/Authorised-Top-Brands-480.webp 480w, images/Authorised-Top-Brands.webp 736w" sizes="(min-width: 768px) 33vw, 100vw" width="736" height="736" alt="Authorised top tyre brands at Yamoto" loading="lazy" decoding="async"></div>
             <div class="why-content">
               <h3>Dealers of Top Tyre Brands</h3>
               <p>From MRF to Michelin, we stock the brands drivers trust</p>
@@ -284,7 +284,7 @@
             </div>
           </article>
           <article class="why-card">
-            <div class="why-image"><img src="images/ATS-ELGI-Precision.png" width="736" height="736" alt="ATS ELGI precision wheel alignment equipment" loading="lazy"></div>
+            <div class="why-image"><img src="images/ATS-ELGI-Precision.webp" srcset="images/ATS-ELGI-Precision-480.webp 480w, images/ATS-ELGI-Precision.webp 736w" sizes="(min-width: 768px) 33vw, 100vw" width="736" height="736" alt="ATS ELGI precision wheel alignment equipment" loading="lazy" decoding="async"></div>
             <div class="why-content">
               <h3>Precision Equipment from ATS Elgi</h3>
               <p>Our machines come from ATS Elgi, a name known for accuracy. This leads to more precise alignment and balance</p>
@@ -303,24 +303,24 @@
       </div>
       <div class="marquee-wrapper">
         <div class="marquee-track" id="marquee-track">
-          <div class="brand-tile"><img src="images/brands/mrf.webp" width="400" height="294" alt="MRF Tyres" loading="lazy"></div>
-          <div class="brand-tile"><img src="images/brands/bridgestone.webp" width="400" height="298" alt="Bridgestone" loading="lazy"></div>
-          <div class="brand-tile"><img src="images/brands/apollo.webp" width="400" height="400" alt="Apollo Tyres" loading="lazy"></div>
-          <div class="brand-tile"><img src="images/brands/jk-tyre.webp" width="400" height="226" alt="JK Tyre" loading="lazy"></div>
-          <div class="brand-tile"><img src="images/brands/continental.webp" width="400" height="277" alt="Continental Tyres" loading="lazy"></div>
-          <div class="brand-tile"><img src="images/brands/michelin.webp" width="400" height="225" alt="Michelin" loading="lazy"></div>
-          <div class="brand-tile"><img src="images/brands/ceat.webp" width="400" height="400" alt="CEAT Tyres" loading="lazy"></div>
-          <div class="brand-tile"><img src="images/brands/yokohama.webp" width="400" height="173" alt="Yokohama" loading="lazy"></div>
-          <div class="brand-tile"><img src="images/brands/goodyear.webp" width="400" height="250" alt="Goodyear" loading="lazy"></div>
-          <div class="brand-tile" aria-hidden="true"><img src="images/brands/mrf.webp" width="400" height="294" alt="" loading="lazy"></div>
-          <div class="brand-tile" aria-hidden="true"><img src="images/brands/bridgestone.webp" width="400" height="298" alt="" loading="lazy"></div>
-          <div class="brand-tile" aria-hidden="true"><img src="images/brands/apollo.webp" width="400" height="400" alt="" loading="lazy"></div>
-          <div class="brand-tile" aria-hidden="true"><img src="images/brands/jk-tyre.webp" width="400" height="226" alt="" loading="lazy"></div>
-          <div class="brand-tile" aria-hidden="true"><img src="images/brands/continental.webp" width="400" height="277" alt="" loading="lazy"></div>
-          <div class="brand-tile" aria-hidden="true"><img src="images/brands/michelin.webp" width="400" height="225" alt="" loading="lazy"></div>
-          <div class="brand-tile" aria-hidden="true"><img src="images/brands/ceat.webp" width="400" height="400" alt="" loading="lazy"></div>
-          <div class="brand-tile" aria-hidden="true"><img src="images/brands/yokohama.webp" width="400" height="173" alt="" loading="lazy"></div>
-          <div class="brand-tile" aria-hidden="true"><img src="images/brands/goodyear.webp" width="400" height="250" alt="" loading="lazy"></div>
+          <div class="brand-tile"><img src="images/brands/mrf.webp" width="400" height="294" alt="MRF Tyres" loading="lazy" decoding="async"></div>
+          <div class="brand-tile"><img src="images/brands/bridgestone.webp" width="400" height="298" alt="Bridgestone" loading="lazy" decoding="async"></div>
+          <div class="brand-tile"><img src="images/brands/apollo.webp" width="400" height="400" alt="Apollo Tyres" loading="lazy" decoding="async"></div>
+          <div class="brand-tile"><img src="images/brands/jk-tyre.webp" width="400" height="226" alt="JK Tyre" loading="lazy" decoding="async"></div>
+          <div class="brand-tile"><img src="images/brands/continental.webp" width="400" height="277" alt="Continental Tyres" loading="lazy" decoding="async"></div>
+          <div class="brand-tile"><img src="images/brands/michelin.webp" width="400" height="225" alt="Michelin" loading="lazy" decoding="async"></div>
+          <div class="brand-tile"><img src="images/brands/ceat.webp" width="400" height="400" alt="CEAT Tyres" loading="lazy" decoding="async"></div>
+          <div class="brand-tile"><img src="images/brands/yokohama.webp" width="400" height="173" alt="Yokohama" loading="lazy" decoding="async"></div>
+          <div class="brand-tile"><img src="images/brands/goodyear.webp" width="400" height="250" alt="Goodyear" loading="lazy" decoding="async"></div>
+          <div class="brand-tile" aria-hidden="true"><img src="images/brands/mrf.webp" width="400" height="294" alt="" loading="lazy" decoding="async"></div>
+          <div class="brand-tile" aria-hidden="true"><img src="images/brands/bridgestone.webp" width="400" height="298" alt="" loading="lazy" decoding="async"></div>
+          <div class="brand-tile" aria-hidden="true"><img src="images/brands/apollo.webp" width="400" height="400" alt="" loading="lazy" decoding="async"></div>
+          <div class="brand-tile" aria-hidden="true"><img src="images/brands/jk-tyre.webp" width="400" height="226" alt="" loading="lazy" decoding="async"></div>
+          <div class="brand-tile" aria-hidden="true"><img src="images/brands/continental.webp" width="400" height="277" alt="" loading="lazy" decoding="async"></div>
+          <div class="brand-tile" aria-hidden="true"><img src="images/brands/michelin.webp" width="400" height="225" alt="" loading="lazy" decoding="async"></div>
+          <div class="brand-tile" aria-hidden="true"><img src="images/brands/ceat.webp" width="400" height="400" alt="" loading="lazy" decoding="async"></div>
+          <div class="brand-tile" aria-hidden="true"><img src="images/brands/yokohama.webp" width="400" height="173" alt="" loading="lazy" decoding="async"></div>
+          <div class="brand-tile" aria-hidden="true"><img src="images/brands/goodyear.webp" width="400" height="250" alt="" loading="lazy" decoding="async"></div>
         </div>
       </div>
     </section>
@@ -366,14 +366,14 @@
           <h2>A Look Inside Yamoto</h2>
         </header>
         <div class="gallery-grid">
-          <figure class="gallery-item tall"><img src="images/yamoto-3d-wheel-alignment-machine.webp" width="900" height="1200" alt="ATS ELGI 3D wheel alignment machine in operation at Yamoto, Narsingi Hyderabad" loading="lazy">
+          <figure class="gallery-item tall"><img src="images/yamoto-3d-wheel-alignment-machine.webp" srcset="images/yamoto-3d-wheel-alignment-machine-480.webp 480w, images/yamoto-3d-wheel-alignment-machine.webp 900w" sizes="(min-width: 992px) 33vw, (min-width: 640px) 50vw, 100vw" width="900" height="1200" alt="ATS ELGI 3D wheel alignment machine in operation at Yamoto, Narsingi Hyderabad" loading="lazy" decoding="async">
           </figure>
-          <figure class="gallery-item"><img src="images/yamoto-shop-storefront-night.webp" width="1000" height="750" alt="Yamoto tyre shop illuminated storefront with Alignment Balancing Tyres signboard at night, Narsingi"
-              loading="lazy"></figure>
-          <figure class="gallery-item"><img src="images/yamoto-workshop-exterior-night.webp" width="1000" height="750" alt="Yamoto workshop exterior at night with car in bay, Narsingi Hyderabad" loading="lazy"></figure>
-          <figure class="gallery-item"><img src="images/yamoto-workshop-driveway.webp" width="800" height="1067" alt="Yamoto workshop driveway with tyre racks, Narsingi" loading="lazy"></figure>
-          <figure class="gallery-item"><img src="images/yamoto-tyre-display-rack.webp" width="800" height="1067" alt="Tyre display rack at Yamoto workshop in Narsingi Hyderabad" loading="lazy"></figure>
-          <figure class="gallery-item"><img src="images/yamoto-team-at-work.webp" width="800" height="1067" alt="Team at work at Yamoto tyre shop in Narsingi Hyderabad" loading="lazy"></figure>
+          <figure class="gallery-item"><img src="images/yamoto-shop-storefront-night.webp" srcset="images/yamoto-shop-storefront-night-480.webp 480w, images/yamoto-shop-storefront-night.webp 1000w" sizes="(min-width: 992px) 33vw, (min-width: 640px) 50vw, 100vw" width="1000" height="750" alt="Yamoto tyre shop illuminated storefront with Alignment Balancing Tyres signboard at night, Narsingi"
+              loading="lazy" decoding="async"></figure>
+          <figure class="gallery-item"><img src="images/yamoto-workshop-exterior-night.webp" srcset="images/yamoto-workshop-exterior-night-480.webp 480w, images/yamoto-workshop-exterior-night.webp 1000w" sizes="(min-width: 992px) 33vw, (min-width: 640px) 50vw, 100vw" width="1000" height="750" alt="Yamoto workshop exterior at night with car in bay, Narsingi Hyderabad" loading="lazy" decoding="async"></figure>
+          <figure class="gallery-item"><img src="images/yamoto-workshop-driveway.webp" srcset="images/yamoto-workshop-driveway-480.webp 480w, images/yamoto-workshop-driveway.webp 800w" sizes="(min-width: 992px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="1067" alt="Yamoto workshop driveway with tyre racks, Narsingi" loading="lazy" decoding="async"></figure>
+          <figure class="gallery-item"><img src="images/yamoto-tyre-display-rack.webp" srcset="images/yamoto-tyre-display-rack-480.webp 480w, images/yamoto-tyre-display-rack.webp 800w" sizes="(min-width: 992px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="1067" alt="Tyre display rack at Yamoto workshop in Narsingi Hyderabad" loading="lazy" decoding="async"></figure>
+          <figure class="gallery-item"><img src="images/yamoto-team-at-work.webp" srcset="images/yamoto-team-at-work-480.webp 480w, images/yamoto-team-at-work.webp 800w" sizes="(min-width: 992px) 33vw, (min-width: 640px) 50vw, 100vw" width="800" height="1067" alt="Team at work at Yamoto tyre shop in Narsingi Hyderabad" loading="lazy" decoding="async"></figure>
         </div>
       </div>
     </section>
@@ -414,7 +414,7 @@
   <footer class="site-footer" aria-label="Site footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <img src="images/yamoto-logo.webp" width="264" height="264" alt="Yamoto — Your Auto Mate" loading="lazy">
+        <img src="images/yamoto-logo.webp" width="264" height="264" alt="Yamoto — Your Auto Mate" loading="lazy" decoding="async">
         <p>Your Auto Mate in Narsingi, Hyderabad. Precision tyre care, 3D wheel alignment and genuine brand tyres.</p>
         <p class="footer-gstin">Reliable Marketing Services · GSTIN: 36ABAFR5273R1ZI</p>
       </div>

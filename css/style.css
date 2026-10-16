@@ -1,3 +1,10 @@
+/* Self-hosted fonts (latin subset) — replaces render-blocking Google Fonts */
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/barlow-condensed-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/barlow-condensed-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:800;font-display:swap;src:url('../fonts/barlow-condensed-latin-800-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/inter-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/inter-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
 /* ==========================================================================
    YAMOTO TYRE SHOP — DESIGN SYSTEM & STYLESHEET
    Realistic Workshop Aesthetic · Clean, Fast, High-Converting
@@ -1711,7 +1718,7 @@ h1, h2, h3, h4 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(8, 20, 44, 0.78) 0%, rgba(8, 20, 44, 0.65) 55%, rgba(8, 20, 44, 0.3) 100%);
+  background: linear-gradient(90deg, rgba(8, 20, 44, 0.4) 0%, rgba(8, 20, 44, 0.25) 55%, rgba(8, 20, 44, 0.1) 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -1865,7 +1872,7 @@ h1, h2, h3, h4 {
   }
 
   .offer-layout__media::after {
-    background: linear-gradient(180deg, rgba(8, 20, 44, 0.45) 0%, rgba(8, 20, 44, 0.72) 42%, rgba(8, 20, 44, 0.82) 100%);
+    background: linear-gradient(180deg, rgba(8, 20, 44, 0.2) 0%, rgba(8, 20, 44, 0.35) 42%, rgba(8, 20, 44, 0.45) 100%);
   }
 
   .hero-content--split {

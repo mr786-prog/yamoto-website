@@ -95,17 +95,27 @@ function initHeroSlider() {
   let slideInterval = null;
   const slideDuration = 6000; // 6 seconds
 
+  function loadSlideImages(slide) {
+    slide.querySelectorAll('img[data-src]').forEach((img) => {
+      if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+      img.removeAttribute('data-srcset');
+    });
+  }
+
   function goToSlide(index) {
     slides[currentSlide].classList.remove('active');
-    slides[currentSlide].setAttribute('aria-hidden', 'true');
+    slides[currentSlide].inert = true;
     if (indicators[currentSlide]) {
       indicators[currentSlide].classList.remove('active');
     }
 
     currentSlide = (index + slides.length) % slides.length;
 
+    loadSlideImages(slides[currentSlide]);
     slides[currentSlide].classList.add('active');
-    slides[currentSlide].setAttribute('aria-hidden', 'false');
+    slides[currentSlide].inert = false;
     if (indicators[currentSlide]) {
       indicators[currentSlide].classList.add('active');
     }
@@ -157,6 +167,12 @@ function initHeroSlider() {
   hero.addEventListener('mouseenter', stopAutoplay);
   hero.addEventListener('mouseleave', startAutoplay);
 
+  // Fetch slide 2's image only after the page has finished loading,
+  // so it never competes with the hero (LCP) image.
+  const preloadRest = () => slides.forEach(loadSlideImages);
+  if (document.readyState === 'complete') setTimeout(preloadRest, 1500);
+  else window.addEventListener('load', () => setTimeout(preloadRest, 1500), { once: true });
+
   startAutoplay();
 }
 
@@ -171,7 +187,7 @@ function initMobileMenu() {
   hamburger.addEventListener('click', () => {
     const isOpen = mobileNav.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', isOpen);
-    mobileNav.setAttribute('aria-hidden', !isOpen);
+    mobileNav.inert = !isOpen;
   });
 
   // Close when clicking a link
@@ -180,7 +196,7 @@ function initMobileMenu() {
     link.addEventListener('click', () => {
       mobileNav.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
-      mobileNav.setAttribute('aria-hidden', 'true');
+      mobileNav.inert = true;
     });
   });
 }
@@ -215,6 +231,11 @@ function initLazyBackgrounds() {
     entries.forEach((entry) => {
       if (entry.isIntersecting) { load(entry.target); obs.unobserve(entry.target); }
     });
-  }, { rootMargin: '600px 0px' });
-  els.forEach((el) => io.observe(el));
+  }, { rootMargin: '300px 0px' });
+  const start = () => els.forEach((el) => io.observe(el));
+  // Start observing only after the page has loaded, so decorative
+  // backgrounds never compete with the hero image.
+  const afterLoad = () => ('requestIdleCallback' in window ? requestIdleCallback(start, { timeout: 2000 }) : setTimeout(start, 500));
+  if (document.readyState === 'complete') afterLoad();
+  else window.addEventListener('load', afterLoad, { once: true });
 }
