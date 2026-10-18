@@ -15,17 +15,43 @@ document.addEventListener('DOMContentLoaded', () => {
 function initQuoteForm() {
   const form = document.getElementById('quote-form');
   if (!form) return;
+
+  const serviceSelect = document.getElementById('service-select');
+  const otherServiceLabel = document.getElementById('other-service-label');
+  const otherServiceInput = document.getElementById('other-service-input');
+
+  if (serviceSelect && otherServiceLabel && otherServiceInput) {
+    serviceSelect.addEventListener('change', () => {
+      if (serviceSelect.value === 'Other') {
+        otherServiceLabel.style.display = '';
+        otherServiceInput.required = true;
+      } else {
+        otherServiceLabel.style.display = 'none';
+        otherServiceInput.required = false;
+        otherServiceInput.value = '';
+      }
+    });
+  }
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = new FormData(form);
+    const service = data.get('service');
+    const otherService = data.get('other-service');
+    const visit = data.get('visit');
+
     const lines = [
-      'Hi Yamoto, I need a free quote.',
+      'Hi Yamoto, I need a quote.',
       `Name: ${data.get('name')}`,
       `Mobile: ${data.get('mobile')}`,
       `Car: ${data.get('car')}`,
-      `Service: ${data.get('service')}`,
-      `Preferred visit time: ${data.get('visit') || 'Not specified'}`
+      `Service: ${service === 'Other' ? otherService : service}`
     ];
+
+    if (visit) {
+      lines.push(`Other information: ${visit}`);
+    }
+
     window.open(`https://wa.me/919676065353?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
   });
 }

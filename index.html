@@ -208,17 +208,18 @@
       <div class="contact-cta-inner lazy-bg" data-bg="images/bg-quote.webp">
         <div class="cta-overlay"></div>
         <div class="container cta-content">
-          <h2>Get a Free Quote</h2>
+          <h2>Get a Quote</h2>
           <form class="quote-form" id="quote-form">
             <label>Name<input name="name" autocomplete="name" required></label>
             <label>Mobile number<input name="mobile" type="tel" autocomplete="tel" required></label>
             <label>Car make and model<input name="car" required></label>
-            <label>Service needed<select name="service" required>
+            <label>Service needed<select name="service" id="service-select" required>
               <option value="">Select a service</option><option>Wheel alignment</option><option>Wheel balancing</option>
-              <option>Tyre rotation</option><option>New tyre replacement</option>
+              <option>Tyre rotation</option><option>New tyre replacement</option><option>Other</option>
             </select></label>
-            <label>Preferred visit time (optional)<input name="visit" placeholder="e.g. Saturday afternoon"></label>
-            <button class="btn btn-whatsapp btn-xl" type="submit">Get a Free Quote on WhatsApp</button>
+            <label id="other-service-label" style="display:none;">Please specify<input name="other-service" id="other-service-input" placeholder="What service do you need?"></label>
+            <label>Other information (optional)<input name="visit" placeholder="Any additional details"></label>
+            <button class="btn btn-whatsapp btn-xl" type="submit">Get a Quote on WhatsApp</button>
           </form>
           <p class="quote-contact">Or call <a href="tel:+919652807626">+91 96528 07626</a> (8 AM–8 PM)</p>
         </div>
