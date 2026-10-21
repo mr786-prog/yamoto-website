@@ -16,13 +16,14 @@ function initQuoteForm() {
   const form = document.getElementById('quote-form');
   if (!form) return;
 
-  const serviceSelect = document.getElementById('service-select');
+  const serviceOptions = document.getElementById('service-options');
   const otherServiceLabel = document.getElementById('other-service-label');
   const otherServiceInput = document.getElementById('other-service-input');
 
-  if (serviceSelect && otherServiceLabel && otherServiceInput) {
-    serviceSelect.addEventListener('change', () => {
-      if (serviceSelect.value === 'Other') {
+  if (serviceOptions && otherServiceLabel && otherServiceInput) {
+    serviceOptions.addEventListener('change', () => {
+      const selectedOptions = Array.from(serviceOptions.querySelectorAll('input[name="service"]:checked')).map(input => input.value);
+      if (selectedOptions.includes('Other')) {
         otherServiceLabel.style.display = '';
         otherServiceInput.required = true;
       } else {
@@ -36,16 +37,22 @@ function initQuoteForm() {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = new FormData(form);
-    const service = data.get('service');
+    const services = data.getAll('service');
     const otherService = data.get('other-service');
     const visit = data.get('visit');
+
+    // Format services for WhatsApp message
+    let serviceText = services.join(', ');
+    if (services.includes('Other') && otherService) {
+      serviceText = serviceText.replace('Other', otherService);
+    }
 
     const lines = [
       'Hi Yamoto, I need a quote.',
       `Name: ${data.get('name')}`,
       `Mobile: ${data.get('mobile')}`,
       `Car: ${data.get('car')}`,
-      `Service: ${service === 'Other' ? otherService : service}`
+      `Service(s): ${serviceText}`
     ];
 
     if (visit) {

@@ -640,6 +640,19 @@ h1, h2, h3, h4 {
   width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid #cbd5e1;
   border-radius: var(--radius-sm); background: #fff; color: var(--navy-dark); font: inherit;
 }
+.quote-form select[multiple] {
+  min-height: 120px;
+  padding: 8px;
+}
+.quote-form select[multiple] option {
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.quote-form select[multiple] option:hover {
+  background-color: var(--bg-light);
+}
 .quote-form button { grid-column: 1 / -1; justify-self: center; }
 .quote-contact { margin-top: 16px; }
 .quote-contact a { color: #fff; text-decoration: underline; }
@@ -681,9 +694,29 @@ h1, h2, h3, h4 {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
   .services-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .service-card:nth-child(4),
+  .service-card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .service-card:nth-child(4) {
+    grid-column: 1 / 2;
+  }
+
+  .service-card:nth-child(5) {
+    grid-column: 2 / 3;
+  }
+}
+
+@media (min-width: 1200px) {
+  .services-grid {
+    gap: 32px;
   }
 }
 
@@ -1116,6 +1149,25 @@ h1, h2, h3, h4 {
   overflow: hidden;
 }
 
+.areas-map {
+  margin-bottom: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.areas-map img {
+  max-width: 100%;
+  max-height: 500px;
+  height: auto;
+  width: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  object-fit: contain;
+}
+
 .areas-track {
   display: flex;
   gap: 28px;
@@ -1492,6 +1544,17 @@ h1, h2, h3, h4 {
     gap: 18px;
   }
 
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    width: 100%;
+    max-width: none;
+    grid-column: auto;
+  }
+
   .service-content,
   .why-content {
     padding-right: 16px;
@@ -1571,6 +1634,15 @@ h1, h2, h3, h4 {
     height: 124px;
     padding: 14px 18px;
     font-size: 1.1rem;
+  }
+
+  .areas-map {
+    margin-bottom: 24px;
+    padding: 0 10px;
+  }
+
+  .areas-map img {
+    max-height: 300px;
   }
 
   .review-card {
