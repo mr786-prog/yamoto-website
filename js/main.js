@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initTracking();
   initQuoteForm();
   initLazyBackgrounds();
+  initReadingProgress();
+  initBackToTop();
+  initMobileTOC();
+  initShareButtons();
 });
 
 function initQuoteForm() {
@@ -272,3 +276,140 @@ function initLazyBackgrounds() {
   if (document.readyState === 'complete') afterLoad();
   else window.addEventListener('load', afterLoad, { once: true });
 }
+
+/* ==========================================================================
+   Blog Reading Experience: Reading Progress Bar
+   ========================================================================== */
+function initReadingProgress() {
+  const bar = document.getElementById('reading-progress-bar');
+  if (!bar) return;
+  const article = document.querySelector('article.article-main') || document.querySelector('article');
+  if (!article) return;
+
+  function updateProgress() {
+    const rect = article.getBoundingClientRect();
+    const articleTop = rect.top + window.scrollY;
+    const articleHeight = rect.height;
+    const scrollPos = window.scrollY;
+    const windowHeight = window.innerHeight;
+
+    if (scrollPos < articleTop - 100) {
+      bar.style.width = '0%';
+      bar.setAttribute('aria-valuenow', '0');
+    } else {
+      const scrollableDistance = articleHeight - windowHeight + 150;
+      if (scrollableDistance <= 0) {
+        bar.style.width = '100%';
+        bar.setAttribute('aria-valuenow', '100');
+        return;
+      }
+      const progress = Math.min(100, Math.max(0, ((scrollPos - (articleTop - 100)) / scrollableDistance) * 100));
+      bar.style.width = `${progress}%`;
+      bar.setAttribute('aria-valuenow', Math.round(progress));
+    }
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress, { passive: true });
+  updateProgress();
+}
+
+/* ==========================================================================
+   Back to Top Floating Button
+   ========================================================================== */
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+
+  function toggleBtn() {
+    if (window.scrollY > 350) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', toggleBtn, { passive: true });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  toggleBtn();
+}
+
+/* ==========================================================================
+   Mobile Table of Contents Accordion
+   ========================================================================== */
+function initMobileTOC() {
+  const trigger = document.getElementById('mobile-toc-trigger');
+  const content = document.getElementById('mobile-toc-content');
+  if (!trigger || !content) return;
+
+  trigger.addEventListener('click', () => {
+    const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+    trigger.setAttribute('aria-expanded', !isExpanded);
+    content.classList.toggle('open', !isExpanded);
+  });
+
+  // When any chip link is clicked, smooth scroll and optionally collapse on small screens
+  const chips = content.querySelectorAll('a');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (window.innerWidth <= 640) {
+        trigger.setAttribute('aria-expanded', 'false');
+        content.classList.remove('open');
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   Share Buttons (Copy Link & Native Share)
+   ========================================================================== */
+function initShareButtons() {
+  const copyBtn = document.getElementById('copy-link-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        const originalHtml = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<span>✓ Copied!</span>';
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          copyBtn.innerHTML = originalHtml;
+          copyBtn.classList.remove('copied');
+        }, 2200);
+      } catch (err) {
+        const input = document.createElement('input');
+        input.value = window.location.href;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        const originalHtml = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<span>✓ Copied!</span>';
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          copyBtn.innerHTML = originalHtml;
+          copyBtn.classList.remove('copied');
+        }, 2200);
+      }
+    });
+  }
+
+  const nativeShareBtn = document.getElementById('native-share-btn');
+  if (nativeShareBtn) {
+    if (navigator.share) {
+      nativeShareBtn.style.display = 'inline-flex';
+      nativeShareBtn.addEventListener('click', () => {
+        navigator.share({
+          title: document.title,
+          text: 'Check out this tyre care guide from Yamoto in Narsingi, Hyderabad:',
+          url: window.location.href
+        }).catch(() => {});
+      });
+    } else {
+      nativeShareBtn.style.display = 'none';
+    }
+  }
+}
+

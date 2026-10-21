@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Worn Tyres? 7 Signs You Shouldn’t Ignore | Tyre Care Guide | Yamoto Hyderabad</title>
   <meta name="description"
     content="Cracks, bulges, worn tread? Learn 7 signs your car tyres need replacing, with tips for Hyderabad roads. Expert tyre inspection & replacement at Yamoto Narsingi.">
@@ -110,7 +110,7 @@
       --border-dark: rgba(255, 255, 255, 0.12);
       --whatsapp-green: #25D366;
       --whatsapp-hover: #1EBE5D;
-      --font-base: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --font-heading: 'Barlow Condensed', -apple-system, sans-serif;
       --radius-sm: 6px;
       --radius-md: 10px;
@@ -133,6 +133,18 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    /* Ensure anchor jump links account for sticky header */
+    [id] {
+      scroll-margin-top: 96px;
+    }
+
+    @media (max-width: 768px) {
+      [id] {
+        scroll-margin-top: 76px;
+      }
     }
 
     body {
@@ -141,11 +153,12 @@
       background-color: var(--bg-light);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     @media (max-width: 768px) {
       body {
-        padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+        padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px));
       }
     }
 
@@ -173,6 +186,12 @@
       padding: 0 20px;
     }
 
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 16px;
+      }
+    }
+
     h1,
     h2,
     h3,
@@ -182,6 +201,32 @@
       letter-spacing: 0.5px;
       line-height: 1.15;
       color: var(--navy-dark);
+    }
+
+    /* === READING PROGRESS BAR === */
+    .reading-progress-container {
+      position: fixed;
+      top: 88px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: transparent;
+      z-index: 1001;
+      pointer-events: none;
+    }
+
+    @media (max-width: 640px) {
+      .reading-progress-container {
+        top: 64px;
+      }
+    }
+
+    .reading-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--yellow-accent) 0%, #FF9900 100%);
+      box-shadow: 0 0 10px rgba(253, 185, 19, 0.8);
+      transition: width 0.08s ease-out;
     }
 
     /* === BUTTONS === */
@@ -199,6 +244,7 @@
       cursor: pointer;
       transition: var(--transition);
       text-align: center;
+      touch-action: manipulation;
     }
 
     .btn-primary {
@@ -207,7 +253,8 @@
       box-shadow: 0 4px 15px rgba(253, 185, 19, 0.3);
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover,
+    .btn-primary:active {
       background-color: var(--yellow-hover);
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(253, 185, 19, 0.4);
@@ -218,7 +265,8 @@
       color: #fff;
     }
 
-    .btn-whatsapp:hover {
+    .btn-whatsapp:hover,
+    .btn-whatsapp:active {
       background-color: var(--whatsapp-hover);
       transform: translateY(-2px);
       box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
@@ -230,7 +278,8 @@
       border: 1px solid var(--navy-light);
     }
 
-    .btn-call:hover {
+    .btn-call:hover,
+    .btn-call:active {
       background-color: var(--navy-mid);
       border-color: var(--yellow-accent);
       color: #fff;
@@ -239,9 +288,11 @@
     .btn-directions {
       background-color: var(--yellow-accent);
       color: var(--navy-dark);
+      font-weight: 700;
     }
 
-    .btn-directions:hover {
+    .btn-directions:hover,
+    .btn-directions:active {
       background-color: var(--yellow-hover);
     }
 
@@ -258,16 +309,8 @@
       font-weight: 700;
     }
 
-    .btn-outline-dark {
-      background: transparent;
-      border: 2px solid var(--navy-dark);
-      color: var(--navy-dark);
-      font-weight: 600;
-    }
-
-    .btn-outline-dark:hover {
-      background: var(--navy-dark);
-      color: #fff;
+    .w-full {
+      width: 100%;
     }
 
     /* === SITE HEADER === */
@@ -287,6 +330,13 @@
       height: 88px;
     }
 
+    @media (max-width: 640px) {
+      .header-inner {
+        height: 64px;
+        min-height: 64px;
+      }
+    }
+
     .logo-link {
       display: flex;
       align-items: center;
@@ -296,6 +346,12 @@
       height: 66px;
       width: auto;
       object-fit: contain;
+    }
+
+    @media (max-width: 640px) {
+      .logo-img {
+        height: 46px;
+      }
     }
 
     .main-nav {
@@ -358,13 +414,13 @@
     .hamburger {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      width: 28px;
-      height: 24px;
+      justify-content: space-between;
+      width: 40px;
+      height: 36px;
       background: transparent;
       border: none;
       cursor: pointer;
-      padding: 0;
+      padding: 8px 6px;
     }
 
     @media (min-width: 992px) {
@@ -375,10 +431,22 @@
 
     .hamburger span {
       width: 100%;
-      height: 3px;
+      height: 2.5px;
       background-color: #fff;
       border-radius: 2px;
-      transition: var(--transition);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
     }
 
     .mobile-nav {
@@ -406,63 +474,35 @@
       padding: 6px 0;
     }
 
-    .w-full {
-      width: 100%;
-    }
-
-    @media (max-width: 640px) {
-      .header-inner {
-        height: auto;
-        min-height: 74px;
-      }
-      .logo-img {
-        height: clamp(48px, 15vw, 62px);
-        max-width: min(48vw, 180px);
-      }
-      .hamburger {
-        width: 44px;
-        height: 44px;
-        padding: 10px 8px;
-      }
-      .article-header-section {
-        padding: 32px 0 24px;
-      }
-      .article-main {
-        padding: 20px 16px;
-      }
-      .sign-card {
-        padding: 18px 16px;
-      }
-      .sign-number {
-        width: 34px;
-        height: 34px;
-        font-size: 1.25rem;
-      }
-      .sign-title {
-        font-size: 1.25rem;
-      }
-      .inspection-content {
-        padding: 22px 18px;
-      }
-      .article-quote-box {
-        padding: 22px 18px;
-      }
-    }
-
     /* === BREADCRUMBS === */
     .breadcrumb-bar {
       background-color: var(--navy-mid);
-      padding: 12px 0;
+      padding: 10px 0;
       border-bottom: 1px solid var(--navy-light);
+    }
+
+    .breadcrumb-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
 
     .breadcrumb-list {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
       gap: 8px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       color: var(--text-light);
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding: 2px 0;
+    }
+
+    .breadcrumb-list::-webkit-scrollbar {
+      display: none;
     }
 
     .breadcrumb-list a {
@@ -476,7 +516,7 @@
 
     .breadcrumb-separator {
       color: var(--text-light);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 
     .breadcrumb-current {
@@ -484,11 +524,32 @@
       font-weight: 600;
     }
 
-    /* === ARTICLE HEADER & HERO === */
+    .back-to-blog-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--yellow-accent);
+      font-size: 0.84rem;
+      font-weight: 600;
+      white-space: nowrap;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: rgba(253, 185, 19, 0.12);
+      border: 1px solid rgba(253, 185, 19, 0.25);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .back-to-blog-link:hover {
+      background: var(--yellow-accent);
+      color: var(--navy-dark);
+    }
+
+    /* === ARTICLE HERO HEADER === */
     .article-header-section {
       background: linear-gradient(180deg, var(--navy-dark) 0%, var(--navy-mid) 100%);
       color: #fff;
-      padding: 48px 0 36px;
+      padding: 44px 0 32px;
       position: relative;
     }
 
@@ -508,13 +569,30 @@
       text-align: center;
     }
 
+    @media (max-width: 640px) {
+      .article-header-section {
+        padding: 24px 0 20px;
+      }
+      .article-header-inner {
+        text-align: left;
+      }
+    }
+
     .post-badge-group {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
       justify-content: center;
+    }
+
+    @media (max-width: 640px) {
+      .post-badge-group {
+        justify-content: flex-start;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
     }
 
     .post-category {
@@ -522,10 +600,10 @@
       border: 1px solid var(--yellow-accent);
       color: var(--yellow-accent);
       font-family: var(--font-heading);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 700;
       letter-spacing: 1px;
-      padding: 5px 14px;
+      padding: 4px 12px;
       border-radius: 50px;
       text-transform: uppercase;
       display: inline-flex;
@@ -537,26 +615,33 @@
       background: rgba(255, 255, 255, 0.1);
       color: #E2E8F0;
       font-size: 0.8rem;
-      padding: 5px 12px;
+      padding: 4px 12px;
       border-radius: 50px;
       letter-spacing: 0.5px;
     }
 
     .article-title {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-size: clamp(1.85rem, 5.5vw, 3.4rem);
       font-weight: 800;
-      line-height: 1.08;
+      line-height: 1.1;
       color: #fff;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       text-wrap: balance;
     }
 
     .article-lead-subtitle {
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-size: clamp(0.98rem, 2vw, 1.2rem);
       color: #CBD5E1;
       max-width: 760px;
-      margin: 0 auto 26px;
-      line-height: 1.55;
+      margin: 0 auto 22px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .article-lead-subtitle {
+        margin: 0 0 18px 0;
+        font-size: 0.98rem;
+      }
     }
 
     .post-meta-bar {
@@ -564,11 +649,20 @@
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
-      font-size: 0.88rem;
+      gap: 16px;
+      font-size: 0.85rem;
       color: #94A3B8;
-      padding-top: 18px;
+      padding-top: 16px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 640px) {
+      .post-meta-bar {
+        justify-content: flex-start;
+        gap: 10px 14px;
+        padding-top: 14px;
+        font-size: 0.82rem;
+      }
     }
 
     .meta-item {
@@ -581,15 +675,76 @@
       color: #F1F5F9;
     }
 
+    /* Mobile Quick Share Strip */
+    .article-share-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      .article-share-strip {
+        justify-content: flex-start;
+      }
+    }
+
+    .share-btn-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #E2E8F0;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .share-btn-pill:hover,
+    .share-btn-pill:active {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+      border-color: var(--yellow-accent);
+    }
+
+    .share-btn-pill.whatsapp {
+      background: rgba(37, 211, 102, 0.16);
+      border-color: var(--whatsapp-green);
+      color: #25D366;
+    }
+
+    .share-btn-pill.whatsapp:hover {
+      background: var(--whatsapp-green);
+      color: #fff;
+    }
+
+    .share-btn-pill.copied {
+      background: #10B981;
+      border-color: #10B981;
+      color: #fff;
+    }
+
     /* === BLOG MAIN LAYOUT === */
     .blog-page-body {
-      padding: 44px 0 70px;
+      padding: 36px 0 60px;
+    }
+
+    @media (max-width: 768px) {
+      .blog-page-body {
+        padding: 16px 0 40px;
+      }
     }
 
     .blog-layout-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 36px;
       align-items: start;
     }
 
@@ -604,20 +759,35 @@
     .article-main {
       background: #fff;
       border-radius: var(--radius-xl);
-      padding: clamp(24px, 4vw, 48px);
+      padding: clamp(20px, 3.5vw, 44px);
       box-shadow: var(--shadow-md);
       border: 1px solid var(--border-color);
     }
 
+    @media (max-width: 640px) {
+      .article-main {
+        padding: 18px 14px;
+        border-radius: var(--radius-lg);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+    }
+
     /* Hero Image Wrapper */
     .hero-image-wrapper {
-      margin-bottom: 36px;
+      margin-bottom: 28px;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      border: 2px solid var(--navy-dark);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
       background-color: var(--navy-dark);
       position: relative;
+    }
+
+    @media (max-width: 640px) {
+      .hero-image-wrapper {
+        margin-bottom: 22px;
+        border-radius: var(--radius-md);
+      }
     }
 
     .hero-image-wrapper img {
@@ -627,21 +797,17 @@
       transition: transform 0.4s ease;
     }
 
-    .hero-image-wrapper:hover img {
-      transform: scale(1.015);
-    }
-
     .image-caption {
       background-color: var(--navy-surface);
       color: #CBD5E1;
-      font-size: 0.88rem;
-      padding: 12px 18px;
+      font-size: 0.85rem;
+      padding: 10px 16px;
       border-top: 1px solid rgba(253, 185, 19, 0.3);
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .image-caption span {
@@ -653,34 +819,156 @@
     .badge-inspection {
       background: var(--yellow-accent);
       color: var(--navy-dark);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       padding: 3px 8px;
       border-radius: 4px;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
     }
 
     /* Intro section */
     .article-intro {
-      font-size: 1.15rem;
+      font-size: 1.08rem;
       line-height: 1.75;
       color: #334155;
       background: #F8FAFC;
       border-left: 4px solid var(--yellow-accent);
-      padding: 20px 24px;
+      padding: 18px 20px;
       border-radius: 0 var(--radius-md) var(--radius-md) 0;
-      margin-bottom: 38px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 640px) {
+      .article-intro {
+        font-size: 1rem;
+        padding: 14px 16px;
+        margin-bottom: 22px;
+      }
     }
 
     .article-intro p strong {
       color: var(--navy-dark);
     }
 
+    /* Mobile In-Article Quick Jump Drawer */
+    .mobile-toc-accordion {
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: var(--radius-md);
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+
+    .mobile-toc-trigger {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: var(--font-base);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy-dark);
+      text-align: left;
+    }
+
+    .toc-trigger-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toc-trigger-title strong {
+      color: #0284C7;
+      font-weight: 600;
+      font-size: 0.86rem;
+    }
+
+    .toc-toggle-arrow {
+      font-size: 1.1rem;
+      color: #64748B;
+      transition: transform 0.25s ease;
+    }
+
+    .mobile-toc-trigger[aria-expanded="true"] .toc-toggle-arrow {
+      transform: rotate(180deg);
+    }
+
+    .mobile-toc-content {
+      display: none;
+      padding: 0 14px 14px 14px;
+      border-top: 1px solid #E2E8F0;
+      background: #FFFFFF;
+    }
+
+    .mobile-toc-content.open {
+      display: block;
+    }
+
+    .mobile-toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      padding-top: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .mobile-toc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .toc-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: #334155;
+      transition: var(--transition);
+    }
+
+    .toc-chip:hover,
+    .toc-chip:active {
+      background: var(--navy-dark);
+      color: #fff;
+      border-color: var(--navy-dark);
+    }
+
+    .chip-num {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--yellow-hover);
+      font-size: 0.95rem;
+    }
+
+    .toc-chip.urgent-chip {
+      border-left: 3px solid #EF4444;
+    }
+
+    .toc-chip.highlight-chip {
+      border-left: 3px solid #0284C7;
+    }
+
+    .toc-chip.gold-chip {
+      border-left: 3px solid var(--yellow-accent);
+      font-weight: 600;
+    }
+
     /* Content Headings */
     .article-main h2.section-subhead {
-      font-size: 1.95rem;
+      font-size: clamp(1.4rem, 4.5vw, 1.95rem);
       color: var(--navy-dark);
-      margin: 36px 0 20px;
+      margin: 32px 0 20px;
       position: relative;
       display: flex;
       align-items: center;
@@ -703,28 +991,34 @@
     .signs-container {
       display: flex;
       flex-direction: column;
-      gap: 28px;
-      margin: 30px 0 44px;
+      gap: 24px;
+      margin: 24px 0 40px;
     }
 
     .sign-card {
       background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
-      padding: 24px 26px;
-      box-shadow: 0 3px 10px rgba(8, 20, 44, 0.04);
+      padding: 22px 24px;
+      box-shadow: 0 3px 12px rgba(8, 20, 44, 0.04);
       position: relative;
       transition: var(--transition);
       border-left: 5px solid var(--navy-mid);
     }
 
+    @media (max-width: 640px) {
+      .sign-card {
+        padding: 16px 14px;
+        border-radius: var(--radius-md);
+      }
+    }
+
     .sign-card:hover {
       box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
     }
 
     .sign-card.urgent {
-      border-left-color: #EF4444;
+      border-left-color: #DC2626;
       background: linear-gradient(180deg, #FFFFFF 0%, #FEF2F2 100%);
     }
 
@@ -735,58 +1029,59 @@
 
     .sign-header {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      flex-direction: column;
+      gap: 8px;
       margin-bottom: 14px;
     }
 
-    .sign-title-wrap {
+    .sign-meta-top {
       display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .sign-number {
-      width: 40px;
-      height: 40px;
+    .sign-number-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       background-color: var(--navy-dark);
       color: var(--yellow-accent);
       font-family: var(--font-heading);
-      font-size: 1.5rem;
+      font-size: 0.95rem;
       font-weight: 800;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      padding: 3px 10px;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
     }
 
-    .sign-card.urgent .sign-number {
+    .sign-card.urgent .sign-number-badge {
       background-color: #DC2626;
       color: #fff;
     }
 
-    .sign-card.caution .sign-number {
+    .sign-card.caution .sign-number-badge {
       background-color: var(--yellow-accent);
       color: var(--navy-dark);
     }
 
     .sign-title {
-      font-size: 1.45rem;
+      font-size: clamp(1.2rem, 3.8vw, 1.45rem);
       font-weight: 800;
       color: var(--navy-dark);
       margin: 0;
+      line-height: 1.25;
     }
 
     .sign-severity {
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      padding: 4px 10px;
+      padding: 3px 10px;
       border-radius: 50px;
+      white-space: nowrap;
     }
 
     .severity-high {
@@ -809,7 +1104,7 @@
 
     .sign-body {
       color: #334155;
-      font-size: 1.02rem;
+      font-size: 1rem;
       line-height: 1.7;
     }
 
@@ -817,31 +1112,63 @@
       margin-top: 10px;
     }
 
+    /* Fixed Local Tip: Block layout prevents horizontal squishing on mobile */
     .hyderabad-tip {
       margin-top: 14px;
-      background: rgba(8, 20, 44, 0.04);
+      background: rgba(253, 185, 19, 0.08);
+      border-left: 3px solid var(--yellow-accent);
       border-radius: var(--radius-sm);
-      padding: 10px 14px;
+      padding: 12px 14px;
       font-size: 0.92rem;
-      color: #475569;
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
+      color: #334155;
+      display: block;
+      line-height: 1.6;
     }
 
-    .hyderabad-tip strong {
+    .tip-title-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
       color: var(--navy-dark);
-      white-space: nowrap;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .urgent-alert-box {
+      margin-top: 14px;
+      background: #FEE2E2;
+      border: 1px solid #F87171;
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      color: #991B1B;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .urgent-alert-box strong {
+      display: block;
+      margin-bottom: 2px;
+      color: #7F1D1D;
     }
 
     /* Embedded Infographic in Post */
     .infographic-block {
-      margin: 36px 0;
+      margin: 28px 0;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--border-color);
       box-shadow: var(--shadow-md);
       background: #08142C;
+    }
+
+    @media (max-width: 640px) {
+      .infographic-block {
+        margin: 20px 0;
+        border-radius: var(--radius-md);
+      }
     }
 
     .infographic-block img {
@@ -851,16 +1178,16 @@
     }
 
     .infographic-caption {
-      padding: 14px 20px;
+      padding: 12px 16px;
       background: var(--navy-dark);
       color: #CBD5E1;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-top: 2px solid var(--yellow-accent);
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     /* Inspection Section with Workshop Photo */
@@ -869,8 +1196,15 @@
       border: 2px solid var(--yellow-accent);
       border-radius: var(--radius-xl);
       overflow: hidden;
-      margin: 44px 0;
+      margin: 36px 0;
       box-shadow: var(--shadow-md);
+    }
+
+    @media (max-width: 640px) {
+      .inspection-feature-box {
+        border-radius: var(--radius-lg);
+        margin: 28px 0;
+      }
     }
 
     .inspection-grid {
@@ -887,7 +1221,18 @@
     .inspection-media {
       position: relative;
       background: var(--navy-dark);
-      min-height: 280px;
+      width: 100%;
+      aspect-ratio: 16/9;
+      max-height: 320px;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .inspection-media {
+        aspect-ratio: auto;
+        height: 100%;
+        max-height: none;
+      }
     }
 
     .inspection-media img {
@@ -898,37 +1243,37 @@
     }
 
     .inspection-content {
-      padding: 32px 28px;
+      padding: clamp(20px, 3.5vw, 32px);
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
     .inspection-content h3 {
-      font-size: 1.85rem;
+      font-size: clamp(1.4rem, 4vw, 1.85rem);
       color: var(--navy-dark);
       margin-bottom: 12px;
     }
 
     .inspection-content p {
       color: #334155;
-      font-size: 1.02rem;
-      margin-bottom: 16px;
+      font-size: 0.98rem;
+      margin-bottom: 14px;
       line-height: 1.6;
     }
 
     .inspection-checklist {
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .inspection-checklist li {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--navy-mid);
       font-weight: 500;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .inspection-checklist li::before {
@@ -941,23 +1286,42 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
+      flex-shrink: 0;
     }
 
     .inspection-actions {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @media (min-width: 500px) {
+      .inspection-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+
+    .inspection-actions .btn {
+      width: 100%;
+      padding: 12px 18px;
+    }
+
+    @media (min-width: 500px) {
+      .inspection-actions .btn {
+        width: auto;
+      }
     }
 
     /* Quote CTA banner inside main article */
     .article-quote-box {
       background: var(--navy-dark);
       border-radius: var(--radius-lg);
-      padding: 32px;
+      padding: clamp(20px, 3.5vw, 32px);
       color: #fff;
-      margin-top: 40px;
+      margin-top: 36px;
       position: relative;
       overflow: hidden;
     }
@@ -976,14 +1340,15 @@
 
     .article-quote-box h3 {
       color: #fff;
-      font-size: 1.8rem;
-      margin-bottom: 10px;
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      margin-bottom: 8px;
     }
 
     .article-quote-box p {
       color: #CBD5E1;
-      font-size: 1rem;
-      margin-bottom: 22px;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.55;
     }
 
     /* Quote Form within post */
@@ -1014,16 +1379,23 @@
       font-weight: 500;
     }
 
+    /* Input font-size: 16px is required to avoid iOS auto-zoom */
     .quote-form-inline input {
-      padding: 12px 14px;
+      padding: 13px 14px;
       border-radius: var(--radius-sm);
       border: 1px solid rgba(255, 255, 255, 0.25);
       background: rgba(255, 255, 255, 0.08);
       color: #fff;
       font-family: var(--font-base);
-      font-size: 0.95rem;
+      font-size: 16px;
       outline: none;
       transition: var(--transition);
+      width: 100%;
+    }
+
+    .quote-form-inline input::placeholder {
+      color: #94A3B8;
+      font-size: 0.9rem;
     }
 
     .quote-form-inline input:focus {
@@ -1035,15 +1407,15 @@
     .quote-form-inline .service-options {
       border: 0;
       padding: 0;
-      margin: 6px 0;
+      margin: 4px 0;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      grid-template-columns: 1fr;
+      gap: 8px;
     }
 
-    @media (max-width: 500px) {
+    @media (min-width: 500px) {
       .quote-form-inline .service-options {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
@@ -1051,20 +1423,21 @@
       color: #FDB913;
       font-size: 0.9rem;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .quote-form-inline .service-options label {
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       padding: 10px 12px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: var(--radius-sm);
       cursor: pointer;
       font-size: 0.88rem;
+      min-height: 44px;
     }
 
     .quote-form-inline .service-options label:has(input:checked) {
@@ -1079,21 +1452,83 @@
       min-height: 18px;
       margin: 0;
       accent-color: var(--yellow-accent);
+      flex-shrink: 0;
+    }
+
+    /* Related Guides & Next Steps Section */
+    .article-next-steps {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 2px dashed #E2E8F0;
+    }
+
+    .next-steps-title {
+      font-size: 1.25rem;
+      color: var(--navy-dark);
+      margin-bottom: 14px;
+    }
+
+    .next-steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 600px) {
+      .next-steps-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .next-step-card {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .next-step-card:hover {
+      border-color: var(--navy-dark);
+      background: #FFFFFF;
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+
+    .next-step-card strong {
+      font-size: 0.96rem;
+      color: var(--navy-dark);
+    }
+
+    .next-step-card p {
+      font-size: 0.85rem;
+      color: #64748B;
+      line-height: 1.5;
+    }
+
+    .next-step-link {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #0284C7;
+      margin-top: 4px;
     }
 
     /* === SIDEBAR STYLES === */
     .article-sidebar {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 22px;
       position: sticky;
-      top: 105px;
+      top: 96px;
     }
 
     .sidebar-card {
       background: #FFFFFF;
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 22px;
       border: 1px solid var(--border-color);
       box-shadow: var(--shadow-sm);
     }
@@ -1118,8 +1553,8 @@
     }
 
     .sidebar-title {
-      font-size: 1.25rem;
-      margin-bottom: 14px;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -1133,16 +1568,16 @@
     .toc-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .toc-list li a {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: #475569;
-      padding: 8px 10px;
+      padding: 6px 8px;
       border-radius: var(--radius-sm);
       transition: var(--transition);
     }
@@ -1150,44 +1585,44 @@
     .toc-list li a:hover {
       background: var(--bg-light);
       color: var(--navy-dark);
-      padding-left: 14px;
+      padding-left: 12px;
       font-weight: 600;
     }
 
     .toc-num {
       color: var(--yellow-hover);
       font-family: var(--font-heading);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
     }
 
     /* Offer pill */
     .offer-box-compact {
-      background: linear-gradient(135deg, rgba(253, 185, 19, 0.2) 0%, rgba(253, 185, 19, 0.05) 100%);
+      background: linear-gradient(135deg, rgba(253, 185, 19, 0.22) 0%, rgba(253, 185, 19, 0.06) 100%);
       border: 1px dashed var(--yellow-accent);
       border-radius: var(--radius-md);
-      padding: 16px;
-      margin-bottom: 16px;
+      padding: 14px;
+      margin-bottom: 14px;
       text-align: center;
     }
 
     .offer-box-compact h4 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: var(--yellow-accent);
       margin-bottom: 4px;
     }
 
     .offer-box-compact p {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: #CBD5E1;
     }
 
     /* Hours badge in sidebar */
     .hours-sidebar-table {
       width: 100%;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: #CBD5E1;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .hours-sidebar-table td {
@@ -1210,7 +1645,7 @@
       color: var(--whatsapp-green);
       padding: 3px 8px;
       border-radius: 50px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 700;
       text-transform: uppercase;
       margin-bottom: 12px;
@@ -1229,19 +1664,63 @@
       border-radius: 50%;
     }
 
+    /* === FLOATING BACK TO TOP BUTTON === */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 80px;
+      right: 18px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--navy-dark);
+      color: var(--yellow-accent);
+      border: 2px solid var(--yellow-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      touch-action: manipulation;
+    }
+
+    .back-to-top-btn.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top-btn:hover,
+    .back-to-top-btn:active {
+      background: var(--yellow-accent);
+      color: var(--navy-dark);
+    }
+
+    @media (min-width: 769px) {
+      .back-to-top-btn {
+        bottom: 24px;
+        right: 24px;
+      }
+    }
+
     /* === FOOTER === */
     .site-footer {
       background-color: var(--navy-dark);
       color: #CBD5E1;
-      padding: 60px 0 0;
+      padding: 48px 0 0;
       border-top: 4px solid var(--yellow-accent);
     }
 
     .footer-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 40px;
-      padding-bottom: 40px;
+      gap: 32px;
+      padding-bottom: 36px;
     }
 
     @media (min-width: 640px) {
@@ -1257,19 +1736,19 @@
     }
 
     .footer-brand img {
-      height: 52px;
+      height: 48px;
       width: auto;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .footer-brand p {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       line-height: 1.6;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .footer-gstin {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-light);
     }
 
@@ -1277,13 +1756,13 @@
     .footer-hours h3,
     .footer-services h3 {
       color: #fff;
-      font-size: 1.25rem;
-      margin-bottom: 16px;
+      font-size: 1.2rem;
+      margin-bottom: 14px;
     }
 
     .footer-contact address p {
       font-style: normal;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       margin-bottom: 8px;
     }
 
@@ -1294,7 +1773,7 @@
 
     .footer-hours table {
       width: 100%;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
     }
 
     .footer-hours td {
@@ -1309,12 +1788,12 @@
 
     .footer-services ul li {
       margin-bottom: 8px;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
     }
 
     .footer-bottom {
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 20px 0;
+      padding: 18px 0;
       background-color: #050E20;
     }
 
@@ -1324,7 +1803,7 @@
       align-items: center;
       gap: 10px;
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-light);
     }
 
@@ -1337,7 +1816,7 @@
     }
 
     .footer-bottom nav a {
-      margin-left: 16px;
+      margin-left: 14px;
       color: var(--text-light);
     }
 
@@ -1345,7 +1824,7 @@
       color: var(--yellow-accent);
     }
 
-    /* === MOBILE BAR === */
+    /* === STICKY MOBILE ACTION BAR === */
     .mobile-bar {
       display: none;
       position: fixed;
@@ -1355,8 +1834,8 @@
       background-color: var(--navy-dark);
       border-top: 2px solid var(--yellow-accent);
       z-index: 999;
-      padding: 8px 12px;
-      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.25);
+      padding: 6px 10px;
+      box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.35);
     }
 
     @media (max-width: 768px) {
@@ -1364,7 +1843,7 @@
         display: flex;
         justify-content: space-around;
         gap: 8px;
-        padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+        padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
       }
     }
 
@@ -1373,19 +1852,32 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 3px;
       flex: 1;
       padding: 6px 4px;
       border-radius: var(--radius-sm);
       color: #fff;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       font-weight: 600;
       text-align: center;
-      min-height: 44px;
+      min-height: 48px;
+      transition: transform 0.15s ease, background-color 0.2s;
+    }
+
+    .mobile-bar-btn:active {
+      transform: scale(0.97);
+    }
+
+    .mobile-bar-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
 
     .mobile-bar-btn.call {
       background-color: var(--navy-mid);
       border: 1px solid var(--navy-light);
+      color: #fff;
     }
 
     .mobile-bar-btn.whatsapp {
@@ -1453,6 +1945,11 @@
 
 <body>
 
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-container" aria-hidden="true">
+    <div class="reading-progress-bar" id="reading-progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+
   <!-- Site Header -->
   <header class="site-header" id="site-header">
     <div class="container header-inner">
@@ -1489,7 +1986,7 @@
         <li><a href="index.html#reviews" class="mobile-nav-link">Reviews</a></li>
         <li><a href="index.html#areas-served" class="mobile-nav-link">Areas</a></li>
         <li><a href="index.html#location" class="mobile-nav-link">Location</a></li>
-        <li><a href="blog.html" class="mobile-nav-link" style="color:var(--yellow-accent);">Blog & Guides</a></li>
+        <li><a href="blog.html" class="mobile-nav-link" style="color:var(--yellow-accent);">Blog &amp; Guides</a></li>
         <li><a href="https://wa.me/919676065353?text=Hi%20Yamoto%2C%20I%20need%20a%20quote"
             class="btn btn-whatsapp w-full" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
         <li><a href="tel:+919652807626" class="btn btn-call w-full">Call +91 96528 07626</a></li>
@@ -1497,16 +1994,19 @@
     </nav>
   </header>
 
-  <!-- Breadcrumb Bar -->
+  <!-- Breadcrumb Bar with Mobile Back Link -->
   <nav class="breadcrumb-bar" aria-label="Breadcrumb">
-    <div class="container">
+    <div class="container breadcrumb-inner">
       <ol class="breadcrumb-list">
         <li><a href="index.html">Home</a></li>
         <li class="breadcrumb-separator">/</li>
         <li><a href="blog.html">Blog</a></li>
         <li class="breadcrumb-separator">/</li>
-        <li class="breadcrumb-current" aria-current="page">Worn Tyres? 7 Signs You Shouldn't Ignore</li>
+        <li class="breadcrumb-current" aria-current="page">Worn Tyres? 7 Signs</li>
       </ol>
+      <a href="blog.html" class="back-to-blog-link">
+        <span>← All Guides</span>
+      </a>
     </div>
   </nav>
 
@@ -1533,6 +2033,20 @@
           <span>Reading time: <strong>4 min read</strong></span>
         </div>
       </div>
+
+      <!-- Quick Share Strip for Mobile & Desktop -->
+      <div class="article-share-strip">
+        <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20tyre%20safety%20guide%20for%20Hyderabad%20roads%3A%20https%3A%2F%2Fyamoto.in%2Fworn-tyres-7-signs-you-shouldnt-ignore.html"
+          class="share-btn-pill whatsapp" target="_blank" rel="noopener" aria-label="Share guide on WhatsApp">
+          <span>💬 Share on WhatsApp</span>
+        </a>
+        <button type="button" class="share-btn-pill" id="copy-link-btn" aria-label="Copy guide link">
+          <span>🔗 Copy Link</span>
+        </button>
+        <button type="button" class="share-btn-pill" id="native-share-btn" style="display:none;" aria-label="Share via device">
+          <span>📤 Share</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -1549,8 +2063,7 @@
             alt="Side-by-side comparison of worn tyre with depleted tread vs new tyre with full tread depth in a tyre workshop"
             width="1200" height="675" loading="eager" fetchpriority="high">
           <figcaption class="image-caption">
-            <span><strong>Safer Drives Start With Good Tyres</strong> — Visual comparison: Worn Tyre vs Brand New
-              Tyre.</span>
+            <span><strong>Safer Drives Start With Good Tyres</strong> — Worn Tyre vs Brand New Tyre.</span>
             <span class="badge-inspection">Visual Guide</span>
           </figcaption>
         </figure>
@@ -1563,10 +2076,35 @@
             braking distances, steering precision, and grip — especially during sudden downpours on Hyderabad’s
             fast-moving Outer Ring Road (ORR) and flyovers.
           </p>
-          <p style="margin-top: 10px; font-weight: 500; color: var(--navy-dark);">
+          <p style="margin-top: 10px; font-weight: 600; color: var(--navy-dark);">
             Here is what to look out for during your monthly vehicle check:
           </p>
         </div>
+
+        <!-- Mobile In-Article Quick Jump Drawer (Table of Contents) -->
+        <nav class="mobile-toc-accordion" id="mobile-toc" aria-label="Quick jump to signs">
+          <button class="mobile-toc-trigger" id="mobile-toc-trigger" aria-expanded="false" aria-controls="mobile-toc-content">
+            <div class="toc-trigger-left">
+              <span class="toc-icon">📑</span>
+              <span class="toc-trigger-title">In This Guide <strong>(Tap to jump to any sign)</strong></span>
+            </div>
+            <span class="toc-toggle-arrow">▾</span>
+          </button>
+          <div class="mobile-toc-content" id="mobile-toc-content">
+            <div class="mobile-toc-grid">
+              <a href="#sign-1" class="toc-chip"><span class="chip-num">01</span> Worn Tread</a>
+              <a href="#damage-examples" class="toc-chip"><span class="chip-num">📸</span> Damage Photos</a>
+              <a href="#sign-2" class="toc-chip"><span class="chip-num">02</span> Sidewall Cracks</a>
+              <a href="#sign-3" class="toc-chip urgent-chip"><span class="chip-num">03</span> Bulges (Urgent) 🚨</a>
+              <a href="#sign-4" class="toc-chip"><span class="chip-num">04</span> Vibration at Speed</a>
+              <a href="#sign-5" class="toc-chip"><span class="chip-num">05</span> Pressure Loss</a>
+              <a href="#sign-6" class="toc-chip"><span class="chip-num">06</span> 5-Year Age Rule</a>
+              <a href="#sign-7" class="toc-chip urgent-chip"><span class="chip-num">07</span> Wet Road Grip 🚨</a>
+              <a href="#workshop-inspection" class="toc-chip highlight-chip"><span class="chip-num">🔍</span> Free Inspection</a>
+              <a href="#get-quote" class="toc-chip gold-chip"><span class="chip-num">💬</span> Request a Quote</a>
+            </div>
+          </div>
+        </nav>
 
         <h2 class="section-subhead" id="seven-signs">7 Signs It’s Time to Replace Your Car Tyres</h2>
 
@@ -1576,11 +2114,11 @@
           <!-- Sign 1 -->
           <section class="sign-card caution" id="sign-1">
             <header class="sign-header">
-              <div class="sign-title-wrap">
-                <span class="sign-number">1</span>
-                <h3 class="sign-title">Worn Tread</h3>
+              <div class="sign-meta-top">
+                <span class="sign-number-badge">Sign 01</span>
+                <span class="sign-severity severity-med">Check Tread Depth</span>
               </div>
-              <span class="sign-severity severity-med">Check Tread Depth</span>
+              <h3 class="sign-title">Worn Tread (Under 1.6 mm Limit)</h3>
             </header>
             <div class="sign-body">
               <p>
@@ -1589,9 +2127,12 @@
                 (about <strong>1.6 mm</strong>), the tyre is legally and functionally finished.
               </p>
               <div class="hyderabad-tip">
-                <strong>Local Tip:</strong> While 1.6 mm is the legal minimum, stopping performance drops drastically
-                below 3 mm in rainy monsoon conditions. When driving on wet stretches in Gachibowli, Kokapet, or HITEC
-                City, shallow tread cannot disperse surface water, leading to terrifying aquaplaning.
+                <div class="tip-title-bar">📍 Local Hyderabad Driving Tip:</div>
+                <p>
+                  While 1.6 mm is the legal minimum, stopping performance drops drastically below 3 mm in rainy monsoon conditions.
+                  When driving on wet stretches in Gachibowli, Kokapet, or HITEC City, shallow tread cannot disperse surface water,
+                  leading to terrifying aquaplaning.
+                </p>
               </div>
             </div>
           </section>
@@ -1602,8 +2143,7 @@
               alt="Common Tyre Damage Examples: Worn Tread, Cracks on Sidewall, and Dangerous Bulges or Bubbles"
               width="1000" height="800" loading="lazy">
             <figcaption class="infographic-caption">
-              <span><strong>Inspection Reference:</strong> Spotting Worn Tread, Sidewall Cracking, and Casing
-                Bulges.</span>
+              <span><strong>Visual Inspection:</strong> Spotting Worn Tread, Sidewall Cracking, and Casing Bulges.</span>
               <span>Yamoto Safety Guide</span>
             </figcaption>
           </figure>
@@ -1611,11 +2151,11 @@
           <!-- Sign 2 -->
           <section class="sign-card caution" id="sign-2">
             <header class="sign-header">
-              <div class="sign-title-wrap">
-                <span class="sign-number">2</span>
-                <h3 class="sign-title">Cracks on the Sidewall</h3>
+              <div class="sign-meta-top">
+                <span class="sign-number-badge">Sign 02</span>
+                <span class="sign-severity severity-med">Rubber Aging</span>
               </div>
-              <span class="sign-severity severity-med">Rubber Aging</span>
+              <h3 class="sign-title">Cracks on the Sidewall</h3>
             </header>
             <div class="sign-body">
               <p>
@@ -1623,9 +2163,11 @@
                 losing their elasticity, typically triggered by intense summer heat, direct sunlight, and age.
               </p>
               <div class="hyderabad-tip">
-                <strong>Hyderabad Roads Context:</strong> Hyderabad’s scorching summer temperatures often bake road
-                tarmac past 50°C. Brittle rubber loses its structural integrity and can rupture without warning when
-                subjected to highway speeds or sudden expansion joint impacts on the ORR.
+                <div class="tip-title-bar">📍 Hyderabad Roads Context:</div>
+                <p>
+                  Hyderabad’s scorching summer temperatures often bake road tarmac past 50°C. Brittle rubber loses its structural
+                  integrity and can rupture without warning when subjected to highway speeds or sudden expansion joint impacts on the ORR.
+                </p>
               </div>
             </div>
           </section>
@@ -1633,11 +2175,11 @@
           <!-- Sign 3 -->
           <section class="sign-card urgent" id="sign-3">
             <header class="sign-header">
-              <div class="sign-title-wrap">
-                <span class="sign-number">3</span>
-                <h3 class="sign-title">Bulges or Bubbles</h3>
+              <div class="sign-meta-top">
+                <span class="sign-number-badge">Sign 03</span>
+                <span class="sign-severity severity-high">🚨 Immediate Danger</span>
               </div>
-              <span class="sign-severity severity-high">Immediate Danger</span>
+              <h3 class="sign-title">Bulges or Bubbles on the Sidewall</h3>
             </header>
             <div class="sign-body">
               <p>
@@ -1645,22 +2187,22 @@
                 plies and steel belts have torn or snapped, usually after taking a hard hit against a deep pothole or
                 kerb.
               </p>
-              <p style="color: #991B1B; font-weight: 600;">
-                ⚠ <strong>Stop driving on it immediately.</strong> The only thing holding air inside is a thin layer of
-                outer rubber. A bulge can burst catastrophic blowout at any moment. Fit your spare wheel or call Yamoto
-                right away.
-              </p>
+              <div class="urgent-alert-box">
+                <strong>⚠️ Stop driving on it immediately!</strong>
+                The only thing holding air inside is a paper-thin layer of outer rubber. A bulge can burst in a catastrophic blowout
+                at any speed. Fit your spare wheel or contact Yamoto Narsingi right away.
+              </div>
             </div>
           </section>
 
           <!-- Sign 4 -->
           <section class="sign-card" id="sign-4">
             <header class="sign-header">
-              <div class="sign-title-wrap">
-                <span class="sign-number">4</span>
-                <h3 class="sign-title">Constant Vibration</h3>
+              <div class="sign-meta-top">
+                <span class="sign-number-badge">Sign 04</span>
+                <span class="sign-severity severity-regular">Alignment &amp; Balancing</span>
               </div>
-              <span class="sign-severity severity-regular">Alignment / Balance Issue</span>
+              <h3 class="sign-title">Constant Vibration or Steering Flutter</h3>
             </header>
             <div class="sign-body">
               <p>
@@ -1669,9 +2211,11 @@
                 internal belt separation, or an oval-shaped flat spot.
               </p>
               <div class="hyderabad-tip">
-                <strong>Next Step:</strong> Have your wheels balanced and checked on our precision <strong>ATS ELGI 3D
-                  wheel alignment equipment</strong> in Narsingi to pinpoint whether a simple rebalancing will fix it or
-                if the tyre core has warped.
+                <div class="tip-title-bar">📍 Next Step:</div>
+                <p>
+                  Have your wheels balanced and checked on our precision <strong>ATS ELGI 3D wheel alignment equipment</strong>
+                  in Narsingi to pinpoint whether a simple rebalancing will fix it or if the tyre core has warped.
+                </p>
               </div>
             </div>
           </section>
@@ -1679,11 +2223,11 @@
           <!-- Sign 5 -->
           <section class="sign-card" id="sign-5">
             <header class="sign-header">
-              <div class="sign-title-wrap">
-                <span class="sign-number">5</span>
-                <h3 class="sign-title">Frequent Pressure Loss</h3>
+              <div class="sign-meta-top">
+                <span class="sign-number-badge">Sign 05</span>
+                <span class="sign-severity severity-regular">Leak Warning</span>
               </div>
-              <span class="sign-severity severity-regular">Leak Warning</span>
+              <h3 class="sign-title">Frequent Pressure Loss (Slow Leaks)</h3>
             </header>
             <div class="sign-body">
               <p>
@@ -1701,11 +2245,11 @@
           <!-- Sign 6 -->
           <section class="sign-card caution" id="sign-6">
             <header class="sign-header">
-              <div class="sign-title-wrap">
-                <span class="sign-number">6</span>
-                <h3 class="sign-title">Tyre Age (The 5-Year Rule)</h3>
+              <div class="sign-meta-top">
+                <span class="sign-number-badge">Sign 06</span>
+                <span class="sign-severity severity-med">Expiry Check</span>
               </div>
-              <span class="sign-severity severity-med">Expiry Check</span>
+              <h3 class="sign-title">Tyre Age (The 5-Year Rule &amp; DOT Code)</h3>
             </header>
             <div class="sign-body">
               <p>
@@ -1723,11 +2267,11 @@
           <!-- Sign 7 -->
           <section class="sign-card urgent" id="sign-7">
             <header class="sign-header">
-              <div class="sign-title-wrap">
-                <span class="sign-number">7</span>
-                <h3 class="sign-title">Poor Grip in the Rain</h3>
+              <div class="sign-meta-top">
+                <span class="sign-number-badge">Sign 07</span>
+                <span class="sign-severity severity-high">🚨 Braking Safety</span>
               </div>
-              <span class="sign-severity severity-high">Braking Safety</span>
+              <h3 class="sign-title">Poor Grip &amp; Longer Braking in the Rain</h3>
             </header>
             <div class="sign-body">
               <p>
@@ -1736,9 +2280,11 @@
                 siphon water away.
               </p>
               <div class="hyderabad-tip">
-                <strong>Safety First:</strong> Wet braking distances for worn tyres can be more than double those of
-                fresh rubber. Don't wait until an emergency braking scenario to find out your tyres have lost their
-                grip.
+                <div class="tip-title-bar">📍 Safety First:</div>
+                <p>
+                  Wet braking distances for worn tyres can be more than double those of fresh rubber. Don't wait until an emergency
+                  braking scenario on the highway to find out your tyres have lost their grip.
+                </p>
               </div>
             </div>
           </section>
@@ -1760,15 +2306,15 @@
                 renewal.
               </p>
               <p>
-                Bring your car to <strong>Yamoto in Narsingi, Hyderabad</strong> (beside HPCL Petrol Station & Bajaj
+                Bring your car to <strong>Yamoto in Narsingi, Hyderabad</strong> (beside HPCL Petrol Station &amp; Bajaj
                 Electronics). Our certified tyre specialists will measure tread depth, inspect sidewalls, check rim
                 condition, and give you an honest recommendation with zero pressure.
               </p>
               <ul class="inspection-checklist">
-                <li>Free digital tread depth & pressure assessment</li>
-                <li>Sidewall crack & casing integrity check</li>
-                <li>ATS ELGI 3D wheel alignment & balance evaluation</li>
-                <li>Genuine replacements from MRF, Michelin, Bridgestone, Apollo & CEAT</li>
+                <li>Free digital tread depth &amp; pressure assessment</li>
+                <li>Sidewall crack &amp; casing integrity check</li>
+                <li>ATS ELGI 3D wheel alignment &amp; balance evaluation</li>
+                <li>Genuine replacements from MRF, Michelin, Bridgestone, Apollo &amp; CEAT</li>
               </ul>
               <div class="inspection-actions">
                 <a href="https://www.google.com/maps/dir/?api=1&amp;destination=YAMOTO%2C%2099M6%2BMXM%2C%20Narsingi%2C%20Hyderabad%2C%20Telangana%20500089&amp;destination_place_id=ChIJxR8MQACVyzsR6OvZPphkTEY"
@@ -1801,7 +2347,7 @@
               </label>
             </div>
 
-            <label>Car Make & Model
+            <label>Car Make &amp; Model
               <input name="car" placeholder="e.g. Hyundai Creta / Honda City / Maruti Brezza" required>
             </label>
 
@@ -1815,7 +2361,7 @@
               <label><input type="checkbox" name="service" value="Tyre rotation"> <span>Tyre Rotation</span></label>
               <label><input type="checkbox" name="service" value="Chauffeur services"> <span>Chauffeur
                   Services</span></label>
-              <label><input type="checkbox" name="service" value="Other"> <span>Other</span></label>
+              <label><input type="checkbox" name="service" value="Other"> <span>Other Services</span></label>
             </fieldset>
 
             <label id="other-service-label" style="display:none;">Please specify service
@@ -1827,7 +2373,7 @@
             </label>
 
             <button class="btn btn-whatsapp btn-xl" type="submit" style="margin-top: 8px;">
-              Get a Quote on WhatsApp 💬
+              💬 Get a Quote on WhatsApp
             </button>
           </form>
 
@@ -1837,26 +2383,43 @@
           </p>
         </section>
 
+        <!-- Related Guides & Services -->
+        <section class="article-next-steps">
+          <h3 class="next-steps-title">Related Guides &amp; Workshop Services</h3>
+          <div class="next-steps-grid">
+            <a href="index.html#services" class="next-step-card">
+              <strong>🔧 3D Wheel Alignment &amp; Balancing</strong>
+              <p>Fix steering flutter, eliminate uneven tread wear, and enjoy straight-line highway stability.</p>
+              <span class="next-step-link">Learn About Our Setup →</span>
+            </a>
+            <a href="blog.html" class="next-step-card">
+              <strong>📚 More Tyre Maintenance Guides</strong>
+              <p>Explore actionable tips on tyre pressure, seasonal maintenance, and tyre rotation schedules.</p>
+              <span class="next-step-link">Browse Blog &amp; Guides →</span>
+            </a>
+          </div>
+        </section>
+
       </article>
 
       <!-- Right Column: Sticky Sidebar -->
       <aside class="article-sidebar" aria-label="Article navigation and workshop info">
 
-        <!-- Table of Contents Card -->
+        <!-- Table of Contents Card (Desktop) -->
         <div class="sidebar-card">
           <h3 class="sidebar-title">
             <span>📑</span> In This Guide
           </h3>
           <ol class="toc-list">
-            <li><a href="#sign-1"><span class="toc-num">01</span> Worn Tread & 1.6mm Limit</a></li>
-            <li><a href="#damage-examples"><span class="toc-num">02</span> Visual Damage Infographic</a></li>
+            <li><a href="#sign-1"><span class="toc-num">01</span> Worn Tread &amp; 1.6mm Limit</a></li>
+            <li><a href="#damage-examples"><span class="toc-num">02</span> Visual Damage Photos</a></li>
             <li><a href="#sign-2"><span class="toc-num">03</span> Sidewall Weather Cracking</a></li>
-            <li><a href="#sign-3"><span class="toc-num">04</span> Bulges, Bubbles & Impacts</a></li>
-            <li><a href="#sign-4"><span class="toc-num">05</span> High-Speed Shaking & Vibration</a></li>
+            <li><a href="#sign-3"><span class="toc-num">04</span> Bulges, Bubbles &amp; Impacts</a></li>
+            <li><a href="#sign-4"><span class="toc-num">05</span> High-Speed Shaking &amp; Vibration</a></li>
             <li><a href="#sign-5"><span class="toc-num">06</span> Persistent Pressure Loss</a></li>
-            <li><a href="#sign-6"><span class="toc-num">07</span> Tyre Age & 4-Digit DOT Code</a></li>
+            <li><a href="#sign-6"><span class="toc-num">07</span> Tyre Age &amp; 4-Digit DOT Code</a></li>
             <li><a href="#sign-7"><span class="toc-num">08</span> Wet Weather Loss of Grip</a></li>
-            <li><a href="#workshop-inspection"><span class="toc-num">09</span> Workshop Inspection in Narsingi</a></li>
+            <li><a href="#workshop-inspection"><span class="toc-num">09</span> Workshop Inspection</a></li>
             <li><a href="#get-quote"><span class="toc-num">10</span> Request a Free Quote</a></li>
           </ol>
         </div>
@@ -1865,11 +2428,11 @@
         <div class="sidebar-card highlight">
           <div class="offer-box-compact">
             <h4>TYRE EXCHANGE OFFER</h4>
-            <p>Swap your old tyres & buy 4 new tyres to save up to <strong>₹1,000</strong></p>
+            <p>Swap your old tyres &amp; buy 4 new tyres to save up to <strong>₹1,000</strong></p>
           </div>
           <h3 class="sidebar-title">Visit Yamoto Narsingi</h3>
           <p style="font-size: 0.88rem; color: #CBD5E1; margin-bottom: 14px; line-height: 1.5;">
-            Beside HPCL Petrol Station & Bajaj Electronics, Narsingi, Hyderabad.
+            Beside HPCL Petrol Station &amp; Bajaj Electronics, Narsingi, Hyderabad.
           </p>
 
           <div class="open-status-pill" id="open-badge">
@@ -1951,7 +2514,7 @@
       </div>
 
       <div class="footer-contact">
-        <h3>Address & Contact</h3>
+        <h3>Address &amp; Contact</h3>
         <address>
           <p>YAMOTO, 99M6+MXM, Narsingi, Hyderabad, Telangana 500089</p>
           <p><a href="tel:+919652807626">+91 96528 07626</a> <small>(8 AM – 8 PM)</small></p>
@@ -1980,13 +2543,13 @@
       </div>
 
       <div class="footer-services">
-        <h3>Services & Resources</h3>
+        <h3>Services &amp; Resources</h3>
         <ul>
           <li><a href="index.html#services">3D Wheel Alignment</a></li>
           <li><a href="index.html#services">Wheel Balancing</a></li>
           <li><a href="index.html#services">Tyre Rotation</a></li>
           <li><a href="index.html#services">New Tyre Replacement</a></li>
-          <li><a href="blog.html" style="color:var(--yellow-accent);">Blog & Tyre Guides</a></li>
+          <li><a href="blog.html" style="color:var(--yellow-accent);">Blog &amp; Tyre Guides</a></li>
         </ul>
       </div>
     </div>
@@ -2004,17 +2567,25 @@
     </div>
   </footer>
 
+  <!-- Floating Back to Top Button -->
+  <button type="button" class="back-to-top-btn" id="back-to-top" aria-label="Scroll back to top">
+    ↑
+  </button>
+
   <!-- Sticky Mobile Action Bar -->
   <nav class="mobile-bar" aria-label="Quick actions">
     <a href="tel:+919652807626" class="mobile-bar-btn call">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
       <span>Call</span>
     </a>
     <a href="https://wa.me/919676065353?text=Hi%20Yamoto%2C%20I%20read%20your%20tyre%20guide%20and%20want%20a%20quote"
       class="mobile-bar-btn whatsapp" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.8.6.26 1.07.42 1.44.54.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.3"/></svg>
       <span>WhatsApp</span>
     </a>
     <a href="https://www.google.com/maps/dir/?api=1&amp;destination=YAMOTO%2C%2099M6%2BMXM%2C%20Narsingi%2C%20Hyderabad%2C%20Telangana%20500089&amp;destination_place_id=ChIJxR8MQACVyzsR6OvZPphkTEY"
       class="mobile-bar-btn directions" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
       <span>Directions</span>
     </a>
   </nav>
