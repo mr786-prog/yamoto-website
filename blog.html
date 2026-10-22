@@ -42,11 +42,50 @@
 
   <style>
     /* === FONTS === */
-    @font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/barlow-condensed-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-    @font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:700;font-display:swap;src:url('fonts/barlow-condensed-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-    @font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:800;font-display:swap;src:url('fonts/barlow-condensed-latin-800-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-    @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/inter-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-    @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('fonts/inter-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+    @font-face {
+      font-family: 'Barlow Condensed';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('fonts/barlow-condensed-latin-600-normal.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+    }
+
+    @font-face {
+      font-family: 'Barlow Condensed';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('fonts/barlow-condensed-latin-700-normal.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+    }
+
+    @font-face {
+      font-family: 'Barlow Condensed';
+      font-style: normal;
+      font-weight: 800;
+      font-display: swap;
+      src: url('fonts/barlow-condensed-latin-800-normal.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/inter-latin-400-normal.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+    }
+
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('fonts/inter-latin-600-normal.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD
+    }
 
     /* === TOKENS === */
     :root {
@@ -77,7 +116,9 @@
       --transition: all 0.25s ease-in-out;
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -114,7 +155,8 @@
       transition: var(--transition);
     }
 
-    ul, ol {
+    ul,
+    ol {
       list-style: none;
     }
 
@@ -125,7 +167,10 @@
       padding: 0 20px;
     }
 
-    h1, h2, h3, h4 {
+    h1,
+    h2,
+    h3,
+    h4 {
       font-family: var(--font-heading);
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -329,24 +374,30 @@
         height: auto;
         min-height: 74px;
       }
+
       .logo-img {
         height: clamp(48px, 15vw, 62px);
         max-width: min(48vw, 180px);
       }
+
       .hamburger {
         width: 44px;
         height: 44px;
         padding: 10px 8px;
       }
+
       .blog-hero {
         padding: 38px 0 30px;
       }
+
       .featured-content {
         padding: 24px 18px;
       }
+
       .featured-title {
         font-size: clamp(1.6rem, 7vw, 2.1rem);
       }
+
       .blog-consultation-banner {
         padding: 28px 20px;
       }
@@ -1015,7 +1066,8 @@
       <span class="blog-badge-tag">Yamoto Blog & Guides</span>
       <h1>Tyre Care Guides for Hyderabad Drivers</h1>
       <p>
-        Clear, practical guides, safety checks, and maintenance advice curated by certified tyre specialists at Yamoto, Narsingi.
+        Practical guides, safety checks, and maintenance advice curated by certified tyre specialists at Yamoto,
+        Narsingi.
       </p>
     </div>
   </header>
@@ -1033,12 +1085,10 @@
       <article class="featured-post-card">
         <div class="featured-media">
           <span class="featured-badge">Article</span>
-          <a href="worn-tyres-7-signs-you-shouldnt-ignore.html" aria-label="Read Worn Tyres? 7 Signs You Shouldn't Ignore">
-            <img
-              src="images/blog post images/Tyre Care Guide for Hyderabad Drivers/hero-image.jpeg"
-              alt="Comparison of worn tyre vs new tyre with full tread in a workshop"
-              width="800"
-              height="500"
+          <a href="worn-tyres-7-signs-you-shouldnt-ignore.html"
+            aria-label="Read Worn Tyres? 7 Signs You Shouldn't Ignore">
+            <img src="images/blog post images/Tyre Care Guide for Hyderabad Drivers/hero-image.jpeg"
+              alt="Comparison of worn tyre vs new tyre with full tread in a workshop" width="800" height="500"
               loading="eager">
           </a>
         </div>
@@ -1076,7 +1126,8 @@
         <div class="consultation-info">
           <h3>Need an Expert Opinion on Your Car Tyres?</h3>
           <p>
-            Drop by our workshop in Narsingi, Hyderabad (beside HPCL Petrol Station). We'll inspect your tread depth, tyre pressure, and wheel balance for free with zero pressure.
+            Drop by our workshop in Narsingi, Hyderabad (beside HPCL Petrol Station). We'll inspect your tread depth,
+            tyre pressure, and wheel balance for free with zero pressure.
           </p>
         </div>
         <div class="consultation-ctas">
@@ -1107,7 +1158,8 @@
         <address>
           <p>YAMOTO, 99M6+MXM, Narsingi, Hyderabad, Telangana 500089</p>
           <p><a href="tel:+919652807626">+91 96528 07626</a> <small>(8 AM – 8 PM)</small></p>
-          <p><a href="https://wa.me/919676065353" target="_blank" rel="noopener">+91 96760 65353</a> <small>(WhatsApp)</small></p>
+          <p><a href="https://wa.me/919676065353" target="_blank" rel="noopener">+91 96760 65353</a>
+            <small>(WhatsApp)</small></p>
           <p><a href="mailto:yamoto.rms@gmail.com">yamoto.rms@gmail.com</a></p>
           <p><a href="https://instagram.com/yamoto.automate" target="_blank" rel="noopener">@yamoto.automate</a></p>
         </address>
